@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitish Shakya - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px;
+      min-height: 85vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 50%;
+      padding-right: 30px;
+    }
+
+    /* Animated heading */
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4em;
+      margin: 0 0 25px 0;
+      background: linear-gradient(90deg, #fff, #a64ac9, #7c4dff, #fff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideColor 5s infinite, textSlide 1.5s ease-in-out forwards;
+    }
+
+    @keyframes slideColor {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes textSlide {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .pill {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 12px 25px;
+      font-size: 1.2em;
+      display: inline-block;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .pill h2 { margin: 0; }
+
+    /* Image Styling */
+    .hero-image {
+      max-width: 40%;
+      text-align: right;
+    }
+    .hero-image img {
+      border-radius: 20px;
+      width: 320px;
+      height: 420px;
+      object-fit: cover;
+      box-shadow: 0 8px 25px rgba(162, 90, 255, 0.7);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .hero-image img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(162, 90, 255, 0.9);
+    }
+
+    .work-link {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      font-size: 1.2em;
+    }
+    .work-link a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .work-link a:hover { text-decoration: underline; }
+
+    section {
+      padding: 60px 50px;
+      margin: 30px auto;
+      max-width: 950px;
+      background-color: #111;
+      border-radius: 12px;
+      text-align: justify;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      font-weight: 700;
+      border-bottom: 3px solid #fff;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    ul { list-style-type: none; padding: 0; }
+    ul li {
+      background-color: #222;
+      margin: 12px 0;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    ul li:hover {
+      transform: scale(1.02);
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #000;
+      color: #fff;
+      font-size: 0.95em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; padding: 50px 20px; }
+      .hero-content { max-width: 100%; margin-bottom: 40px; padding-right: 0; }
+      .hero h1 { font-size: 2.8em; }
+      .hero-image img { width: 220px; height: 280px; }
+      .work-link { position: static; margin-top: 25px; text-align: center; }
+      section { padding: 35px 25px; }
+      h2 { font-size: 1.7em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Welcome to My Portfolio</h1>
+      <div class="pill"><h2>Nitish Shakya</h2></div>
+    </div>
+    <div class="hero-image">
+      <img src="bg.jpg" alt="Nitish Shakya">
+    </div>
+    <div class="work-link">
+      <a href="#about">← Work with me today</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Nitish Shakya, a passionate developer with expertise in frontend and backend technologies. 
+       I enjoy solving real-world problems by building efficient, elegant, and user-friendly applications. 
+       My goal is to continuously grow as a full-stack developer while exploring emerging fields like AI and cloud computing.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li><b>Frontend Development:</b> Expertise in React.js, HTML5, CSS, JavaScript, and responsive design. Strong knowledge of animations, accessibility, and performance optimization.</li>
+      <li><b>Backend Development:</b> Proficient in Node.js, Express.js, and REST API design. Experienced in integrating MongoDB for scalable data storage.</li>
+      <li><b>Programming Languages:</b> Skilled in Python (machine learning, automation), Java (OOP, data structures), C, and C++ for problem-solving and algorithmic thinking.</li>
+      <li><b>Tools & Platforms:</b> Git/GitHub for version control, Vercel for deployment, Docker basics, and familiarity with Linux terminal workflow.</li>
+      <li><b>Soft Skills:</b> Strong communication, adaptability, critical thinking, and teamwork. I thrive in collaborative environments and enjoy mentoring peers.</li>
+    </ul>
+  </section>
+
+  <section id="github">
+    <h2>GitHub</h2>
+    <p>Explore my projects on GitHub: 
+      <a href="https://github.com/shakyanitish" target="_blank">https://github.com/shakyanitish</a>
+    </p>
+  </section>
+
+
+</body>
+</html>
