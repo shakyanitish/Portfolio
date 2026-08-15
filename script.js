@@ -170,15 +170,47 @@
     window.addEventListener("pagehide", function () { cancelled = true; });
   }
 
-  /* ---- contact form (demo) ---- */
+  /* ---- contact form ---- */
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
+  var submitBtn = form.querySelector("button[type=submit]");
+  var FORM_URL = "https://formspree.io/f/YOUR_FORM_ID";
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    var data = {
+      name: form.querySelector("#name").value,
+      email: form.querySelector("#email").value,
+      message: form.querySelector("#message").value
+    };
+
+    submitBtn.disabled = true;
     statusEl.classList.add("show");
-    form.querySelectorAll("input, textarea").forEach(function (f) { f.value = ""; });
-    statusEl.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "nearest" });
+    statusEl.textContent = "Sending…";
+
+    fetch(FORM_URL, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.ok) {
+          statusEl.textContent = "Thanks! Your message has been sent — I'll reply soon.";
+          form.reset();
+        } else {
+          statusEl.textContent = "Something went wrong. Please email me directly at shakyanitish55@gmail.com.";
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = "Network error. Please email me directly at shakyanitish55@gmail.com.";
+      })
+      .then(function () { submitBtn.disabled = false; });
   });
 
   /* ---- footer year ---- */
