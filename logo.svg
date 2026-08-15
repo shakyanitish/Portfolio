@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-label="Nitish Shakya logo">
+  <g transform="translate(8,8) scale(1.25)">
+    <rect x="4" y="4" width="56" height="56" rx="14" fill="#0e6e55"/>
+    <path fill="#fdfaf3" d="M16 18h5v29h-5z"/>
+    <path fill="#fdfaf3" d="M34 18h5v29h-5z"/>
+    <path fill="#fdfaf3" d="M16 18l5 0 18 29-5 0z"/>
+    <rect x="43" y="23" width="6" height="18" rx="3" fill="#c26b2a"/>
+  </g>
+  <g>
+    <text x="104" y="54" font-family="Georgia, 'Times New Roman', 'Palatino Linotype', serif" font-size="29" font-weight="700" fill="#221b13">Nitish Shakya</text>
+    <text x="105" y="72" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="3.5" font-weight="600" fill="#6e6457">FULL STACK · ML ENTHUSIAST</text>
+  </g>
+</svg>

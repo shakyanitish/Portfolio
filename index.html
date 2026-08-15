@@ -1,196 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nitish Shakya - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    /* CSS Styles */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 80px 60px;
-      min-height: 85vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      max-width: 50%;
-      padding-right: 30px;
-    }
-
-    /* Animated heading */
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4em;
-      margin: 0 0 25px 0;
-      background: linear-gradient(90deg, #fff, #a64ac9, #7c4dff, #fff);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: slideColor 5s infinite, textSlide 1.5s ease-in-out forwards;
-    }
-
-    @keyframes slideColor {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes textSlide {
-      0% { opacity: 0; transform: translateX(-100px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-
-    .pill {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      padding: 12px 25px;
-      font-size: 1.2em;
-      display: inline-block;
-      margin-bottom: 50px;
-      text-align: center;
-    }
-
-    .pill h2 { margin: 0; }
-
-    /* Image Styling */
-    .hero-image {
-      max-width: 40%;
-      text-align: right;
-    }
-    .hero-image img {
-      border-radius: 20px;
-      width: 320px;
-      height: 420px;
-      object-fit: cover;
-      box-shadow: 0 8px 25px rgba(162, 90, 255, 0.7);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-    .hero-image img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 35px rgba(162, 90, 255, 0.9);
-    }
-
-    .work-link {
-      position: absolute;
-      bottom: 40px;
-      right: 40px;
-      font-size: 1.2em;
-    }
-    .work-link a {
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .work-link a:hover { text-decoration: underline; }
-
-    section {
-      padding: 60px 50px;
-      margin: 30px auto;
-      max-width: 950px;
-      background-color: #111;
-      border-radius: 12px;
-      text-align: justify;
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2em;
-      font-weight: 700;
-      border-bottom: 3px solid #fff;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      text-align: left;
-    }
-
-    ul { list-style-type: none; padding: 0; }
-    ul li {
-      background-color: #222;
-      margin: 12px 0;
-      padding: 15px 20px;
-      border-radius: 8px;
-      font-size: 1.1em;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    ul li:hover {
-      transform: scale(1.02);
-      background-color: #333;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background-color: #000;
-      color: #fff;
-      font-size: 0.95em;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; text-align: center; padding: 50px 20px; }
-      .hero-content { max-width: 100%; margin-bottom: 40px; padding-right: 0; }
-      .hero h1 { font-size: 2.8em; }
-      .hero-image img { width: 220px; height: 280px; }
-      .work-link { position: static; margin-top: 25px; text-align: center; }
-      section { padding: 35px 25px; }
-      h2 { font-size: 1.7em; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitish Shakya — Full Stack Developer & ML Enthusiast</title>
+<meta name="description" content="Portfolio of Nitish Shakya — a full stack developer and machine learning enthusiast building clean, practical web applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="logo-mark.png">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Welcome to My Portfolio</h1>
-      <div class="pill"><h2>Nitish Shakya</h2></div>
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></symbol>
+  <symbol id="i-email" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#home">Nitish Shakya</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#home" class="is-active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <div class="container">
+      <a href="#home"><span>Home</span></a>
+      <a href="#about"><span>About</span></a>
+      <a href="#skills"><span>Skills</span></a>
+      <a href="#projects"><span>Projects</span></a>
+      <a href="#experience"><span>Experience</span></a>
+      <a href="#education"><span>Education</span></a>
+      <a href="#contact"><span>Contact</span></a>
     </div>
-    <div class="hero-image">
-      <img src="bg.jpg" alt="Nitish Shakya">
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow"><i aria-hidden="true"></i>Backend Developer  · Kathmandu, Nepal</p>
+        <h2 class="hero-title" id="hero-title">Hi, I&rsquo;m Nitish Shakya.</h2>
+        <p class="hero-role">PHP Developer</p>
+        <p class="hero-intro">I build clean, practical and scalable web applications and explore intelligent solutions.</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="#projects">View My Work <span class="arr">↗</span></a>
+          <a class="btn btn--ghost" href="#contact">Contact Me</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/shakyanitish" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-github"></use></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/nitish-shakya" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:shakyanitish55@gmail.com" aria-label="Email">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-email"></use></svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <div class="term" id="term" aria-hidden="true">
+        <div class="term-bar">
+          <i></i><i></i><i></i>
+          <span class="term-title">nitish@portfolio: ~/cv</span>
+        </div>
+        <pre class="term-body"><code id="term-code"></code></pre>
+      </div>
     </div>
-    <div class="work-link">
-      <a href="#about">← Work with me today</a>
+    <a class="scroll-hint" href="#about" aria-label="Scroll to about section">Scroll<i aria-hidden="true"></i></a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div>
+        <div class="reveal">
+          <p class="eyebrow"><i>01</i><span>About</span></p>
+          <h2 class="section-title" id="about-title">A developer who likes building things that work.</h2>
+          <p class="section-intro">A short introduction to what I do and what I&rsquo;m exploring.</p>
+        </div>
+        <div class="about-copy reveal" data-delay="80">
+          <p>I&rsquo;m a B.Sc. CSIT graduate from Amrit Campus, Kathmandu, and a developer who cares about the small details &mdash; fast, accessible interfaces on the frontend and clean, reliable systems behind them.</p>
+          <p>I&rsquo;ve worked professionally as a backend developer, writing SQL, building server-side modules and shipping to live client websites. Alongside web development, I explore Python and machine learning &mdash; computer vision and deep learning projects beyond the typical web app.</p>
+        </div>
+        <div class="reveal" data-delay="160">
+          <p class="about-tags-label">Currently focused on</p>
+          <ul class="about-tags">
+            <li>Full Stack Development</li>
+            <li>React / Next.js</li>
+            <li>Backend Development</li>
+            <li>Python</li>
+            <li>Machine Learning</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-card-wrap reveal" data-delay="120">
+        <div class="about-card">
+          <div class="about-card-inner">
+            <p class="about-name">Nitish Shakya</p>
+            <p class="about-role">PHP Developer</p>
+            <p class="about-loc">Chabahil, Kathmandu, Nepal</p>
+            <div class="about-interests">
+              <p>Interests</p>
+              <ul>
+                <li><i aria-hidden="true"></i>Software Development</li>
+                <li><i aria-hidden="true"></i>Machine Learning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow"><i>02</i><span>Skills</span></p>
+        <h2 class="section-title" id="skills-title">A practical stack, from UI to models.</h2>
+        <p class="section-intro">The tools I reach for most often, grouped by the kind of work they support.</p>
+      </div>
+      <ul class="skills-grid">
+        <li class="skill-group reveal"><div class="skill-group-head"><h3>Frontend</h3><span class="num">01</span></div><ul class="skill-items">
+          <li><i aria-hidden="true"></i>HTML</li><li><i aria-hidden="true"></i>CSS</li><li><i aria-hidden="true"></i>JavaScript</li>
+        </ul></li>
+        <li class="skill-group reveal" data-delay="60"><div class="skill-group-head"><h3>Backend</h3><span class="num">02</span></div><ul class="skill-items">
+          <li><i aria-hidden="true"></i>PHP</li><li><i aria-hidden="true"></i>REST APIs</li>
+        </ul></li>
+        <li class="skill-group reveal" data-delay="120"><div class="skill-group-head"><h3>Database</h3><span class="num">03</span></div><ul class="skill-items">
+          <li><i aria-hidden="true"></i>MySQL</li><li><i aria-hidden="true"></i>MongoDB</li>
+        </ul></li>
+        <li class="skill-group reveal" data-delay="60"><div class="skill-group-head"><h3>Programming</h3><span class="num">05</span></div><ul class="skill-items">
+          <li><i aria-hidden="true"></i>C</li><li><i aria-hidden="true"></i>C++</li><li><i aria-hidden="true"></i>Java</li><li><i aria-hidden="true"></i>Python</li>
+        </ul></li>
+        <li class="skill-group reveal" data-delay="120"><div class="skill-group-head"><h3>Machine Learning</h3><span class="num">06</span></div><ul class="skill-items">
+          <li><i aria-hidden="true"></i>TensorFlow</li><li><i aria-hidden="true"></i>Keras</li><li><i aria-hidden="true"></i>OpenCV</li><li><i aria-hidden="true"></i>MediaPipe</li><li><i aria-hidden="true"></i>CNN</li>
+        </ul></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow"><i>03</i><span>Projects</span></p>
+        <h2 class="section-title" id="projects-title">Selected work.</h2>
+        <p class="section-intro">A few things I&rsquo;ve built &mdash; each one a real problem I wanted to solve, from medical imaging to everyday interfaces.</p>
+      </div>
+
+      <div class="projects-list">
+
+        <!-- 01 Brain Tumor -->
+        <article class="project reveal">
+          <div class="project-media">
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of an MRI brain scan with a highlighted detection region">
+              <rect width="800" height="600" fill="#f0eadf"/>
+              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+              </g>
+              <path d="M 430 128 C 522 128 557 205 557 285 C 557 365 517 426 462 454 L 426 454 C 453 426 464 400 464 380 C 464 360 432 352 414 362 C 387 374 347 398 337 464 L 306 464 C 306 374 332 317 332 285 C 332 190 362 128 430 128 Z" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <g stroke="#d9cdba" stroke-width="1.5" fill="none">
+                <ellipse cx="430" cy="300" rx="112" ry="142"/><ellipse cx="430" cy="300" rx="84" ry="108"/><ellipse cx="430" cy="300" rx="56" ry="72"/>
+                <path d="M 322 285 C 322 232 350 180 390 158"/><path d="M 538 285 C 538 232 510 180 470 158"/>
+              </g>
+              <g stroke="#0e6e55" stroke-width="2"><path d="M 466 300 v 60 M 434 330 h 64"/><circle cx="466" cy="330" r="15" fill="none" stroke-dasharray="3 5"/></g>
+              <circle cx="466" cy="330" r="7" fill="#0e6e55"/>
+              <text x="40" y="70" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">MRI · T1</text>
+              <text x="40" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DETECTED · 1</text>
+              <circle cx="44" cy="545" r="5" fill="#0e6e55"/>
+              <text x="720" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">CNN</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag"><span class="num">01</span><span>Deep learning · Computer vision</span></p>
+            <h3 class="project-title">Brain Tumor Detection Using CNN</h3>
+            <p class="project-desc">Designed and trained a CNN on MRI data, managing the full pipeline from image ingestion to model evaluation. Data augmentation and fine-tuning were applied to improve classification reliability.</p>
+            <ul class="project-stack"><li>Python</li><li>TensorFlow</li><li>Keras</li><li>CNN</li></ul>
+            <div class="project-links">
+              <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
+              <span class="soon">Live demo coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 Hand & Face Detection -->
+        <article class="project project--flip reveal">
+          <div class="project-media">
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a face inside a detection frame with corner brackets">
+              <rect width="800" height="600" fill="#f0eadf"/>
+              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+              </g>
+              <clipPath id="fc"><rect x="300" y="150" width="200" height="300" rx="100"/></clipPath>
+              <g clip-path="url(#fc)" stroke="#d9cdba" stroke-width="1.5"><line x1="300" y1="210" x2="500" y2="210"/><line x1="300" y1="270" x2="500" y2="270"/><line x1="300" y1="330" x2="500" y2="330"/><line x1="300" y1="390" x2="500" y2="390"/><line x1="340" y1="150" x2="340" y2="450"/><line x1="400" y1="150" x2="400" y2="450"/><line x1="460" y1="150" x2="460" y2="450"/></g>
+              <rect x="300" y="150" width="200" height="300" rx="100" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <circle cx="358" cy="260" r="7" fill="#221b13"/><circle cx="442" cy="260" r="7" fill="#221b13"/>
+              <path d="M 400 272 L 400 300 M 386 312 Q 400 322 414 312" stroke="#221b13" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <g stroke="#0e6e55" stroke-width="4" stroke-linecap="round"><path d="M 250 132 V 100 H 282"/><path d="M 518 100 H 550 V 132"/><path d="M 250 468 V 500 H 282"/><path d="M 518 500 H 550 V 468"/></g>
+              <text x="620" y="90" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">MEDIAPIPE</text>
+              <text x="620" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">LIVE · HAND &amp; FACE</text>
+              <circle cx="44" cy="545" r="5" fill="#0e6e55"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag"><span class="num">02</span><span>Computer vision · Real-time</span></p>
+            <h3 class="project-title">MediaPipe Hand &amp; Face Detection</h3>
+            <p class="project-desc">Built real-time gesture recognition and facial landmark tracking with Python and OpenCV, evaluating detection accuracy across varied lighting and camera conditions.</p>
+            <ul class="project-stack"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul>
+            <div class="project-links">
+              <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
+              <span class="soon">Live demo coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 Chatbot -->
+        <article class="project reveal">
+          <div class="project-media">
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of two chat bubbles with a translation arrow between them">
+              <rect width="800" height="600" fill="#f0eadf"/>
+              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+              </g>
+              <rect x="150" y="130" width="260" height="112" rx="18" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <g fill="#d9cdba"><rect x="185" y="160" width="140" height="8" rx="4"/><rect x="185" y="182" width="96" height="8" rx="4"/></g>
+              <circle cx="196" cy="214" r="5" fill="#0e6e55"/>
+              <text x="420" y="128" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">en</text>
+              <path d="M 420 214 C 478 240 452 288 410 318" stroke="#0e6e55" stroke-width="2" fill="none" stroke-dasharray="6 7"/>
+              <path d="M 410 318 l -12 4 l 8 11" fill="none" stroke="#0e6e55" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="340" y="320" width="300" height="122" rx="18" fill="#0e6e55"/>
+              <g fill="#fdfaf3" opacity=".85"><rect x="375" y="352" width="150" height="8" rx="4"/><rect x="375" y="374" width="118" height="8" rx="4"/></g>
+              <path d="M 375 414 l 5 8 9 -16 9 16 9 -16" stroke="#fdfaf3" stroke-width="2" fill="none" stroke-linejoin="round" opacity=".9"/>
+              <text x="608" y="452" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">np</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag"><span class="num">03</span><span>Full stack · Bilingual</span></p>
+            <h3 class="project-title">English to Nepali Chatbot</h3>
+            <p class="project-desc">A full stack chat application that translates English input into Nepali. Built with persistent storage, a custom Express and MongoDB backend, and real-time translation integration.</p>
+            <ul class="project-stack"><li>React.js</li><li>Tailwind CSS</li><li>Express.js</li><li>MongoDB</li></ul>
+            <div class="project-links">
+              <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
+              <span class="soon">Live demo coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 CMS -->
+        <article class="project project--flip reveal">
+          <div class="project-media">
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a content management system admin panel">
+              <rect width="800" height="600" fill="#f0eadf"/>
+              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+              </g>
+              <path d="M 100 132 V 104 C 100 96.3 106.3 90 114 90 H 686 C 693.7 90 700 96.3 700 104 V 132 Z" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <rect x="100" y="132" width="600" height="388" fill="none" stroke="#221b13" stroke-width="2"/>
+              <circle cx="142" cy="111" r="5" fill="#0e6e55"/><circle cx="167" cy="111" r="5" fill="#d9cdba"/><circle cx="192" cy="111" r="5" fill="#d9cdba"/>
+              <rect x="112" y="148" width="152" height="358" rx="8" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1.5"/>
+              <g><rect x="132" y="180" width="14" height="14" rx="4" fill="#0e6e55"/><rect x="156" y="184" width="74" height="6" rx="3" fill="#221b13"/></g>
+              <g><rect x="132" y="218" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="222" width="74" height="6" rx="3" fill="#d9cdba"/></g>
+              <g><rect x="132" y="256" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="260" width="74" height="6" rx="3" fill="#d9cdba"/></g>
+              <g><rect x="132" y="294" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="298" width="74" height="6" rx="3" fill="#d9cdba"/></g>
+              <rect x="288" y="158" width="210" height="14" rx="4" fill="#221b13"/>
+              <rect x="288" y="186" width="120" height="7" rx="3.5" fill="#d9cdba"/>
+              <rect x="288" y="214" width="150" height="30" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
+              <rect x="456" y="214" width="76" height="30" rx="8" fill="#0e6e55"/>
+              <rect x="288" y="264" width="398" height="30" rx="6" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1.5"/>
+              <g fill="#d9cdba"><rect x="304" y="278" width="70" height="6" rx="3"/><rect x="404" y="278" width="90" height="6" rx="3"/><rect x="524" y="278" width="60" height="6" rx="3"/><rect x="614" y="278" width="52" height="6" rx="3"/></g>
+              <rect x="288" y="302" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="314" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="314" width="110" height="7" rx="3.5" fill="#d9cdba"/><circle cx="560" cy="318" r="4" fill="#0e6e55"/><rect x="624" y="313" width="40" height="9" rx="4.5" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1"/>
+              <rect x="288" y="338" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="350" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="350" width="110" height="7" rx="3.5" fill="#d9cdba"/><rect x="624" y="349" width="40" height="9" rx="4.5" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1"/>
+              <rect x="288" y="374" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="386" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="386" width="110" height="7" rx="3.5" fill="#d9cdba"/><rect x="624" y="385" width="40" height="9" rx="4.5" fill="#d9cdba"/>
+              <circle cx="634" cy="452" r="5" fill="#d9cdba"/><circle cx="654" cy="452" r="5" fill="#0e6e55"/><circle cx="674" cy="452" r="5" fill="#d9cdba"/>
+              <text x="120" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DJANGO · CMS</text>
+              <text x="702" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">ADMIN</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag"><span class="num">04</span><span>Backend · Content management</span></p>
+            <h3 class="project-title">Django Backend CMS System</h3>
+            <p class="project-desc">A full CMS backend with CRUD operations for articles, users and categories. Includes role-based authentication and structured SQL queries for secure, efficient data access.</p>
+            <ul class="project-stack"><li>Python</li><li>Django</li><li>MySQL</li></ul>
+            <div class="project-links">
+              <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
+              <span class="soon">Live demo coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 Portfolio -->
+        <article class="project reveal">
+          <div class="project-media">
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a browser window showing a website wireframe layout">
+              <rect width="800" height="600" fill="#f0eadf"/>
+              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+              </g>
+              <rect x="100" y="90" width="600" height="424" rx="14" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <path d="M 100 132 V 104 C 100 96.3 106.3 90 114 90 H 686 C 693.7 90 700 96.3 700 104 V 132 Z" fill="#f0eadf" stroke="#221b13" stroke-width="2"/>
+              <circle cx="142" cy="111" r="5" fill="#0e6e55"/><circle cx="167" cy="111" r="5" fill="#d9cdba"/><circle cx="192" cy="111" r="5" fill="#d9cdba"/>
+              <rect x="128" y="156" width="112" height="318" rx="8" fill="#f0eadf" stroke="#d9cdba" stroke-width="1.5"/>
+              <g fill="#d9cdba"><rect x="148" y="180" width="72" height="7" rx="3.5"/><rect x="148" y="202" width="54" height="7" rx="3.5"/><rect x="148" y="224" width="64" height="7" rx="3.5"/><rect x="148" y="246" width="48" height="7" rx="3.5"/></g>
+              <rect x="148" y="290" width="56" height="22" rx="11" fill="#221b13"/>
+              <rect x="270" y="162" width="210" height="15" rx="4" fill="#221b13"/>
+              <rect x="270" y="190" width="150" height="9" rx="4" fill="#d9cdba"/><rect x="270" y="210" width="176" height="9" rx="4" fill="#d9cdba"/>
+              <rect x="270" y="242" width="150" height="128" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
+              <g stroke="#0e6e55" stroke-width="1.5"><path d="M 345 268 l 26 0 13 22 -13 22 -26 0 -13 -22 z" fill="#fdfaf3"/><path d="M 345 268 l 0 44 M 371 268 l 0 44 M 332 290 l 26 0 M 332 312 l 26 0"/></g>
+              <rect x="440" y="242" width="232" height="128" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
+              <g fill="#d9cdba"><rect x="464" y="272" width="120" height="8" rx="4"/><rect x="464" y="294" width="92" height="8" rx="4"/></g>
+              <rect x="464" y="322" width="66" height="22" rx="11" fill="none" stroke="#221b13" stroke-width="1.5"/>
+              <rect x="270" y="398" width="130" height="9" rx="4" fill="#d9cdba"/><rect x="270" y="418" width="92" height="9" rx="4" fill="#d9cdba"/><rect x="440" y="398" width="150" height="9" rx="4" fill="#d9cdba"/><rect x="440" y="418" width="104" height="9" rx="4" fill="#d9cdba"/>
+              <text x="120" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">NEXT.JS</text>
+              <circle cx="744" cy="545" r="5" fill="#0e6e55"/>
+              <text x="702" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DEPLOYED</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag"><span class="num">05</span><span>Frontend · Interactive UI</span></p>
+            <h3 class="project-title">Developer Portfolio</h3>
+            <p class="project-desc">The site you&rsquo;re looking at &mdash; built as a simple, fast static page with an animated geometric signature and restrained motion.</p>
+            <ul class="project-stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="project-links">
+              <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="demo" href="https://portfolio-six-eosin-605qri6vat.vercel.app/" target="_blank" rel="noreferrer">Live Demo <span class="arr">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow"><i>04</i><span>Experience</span></p>
+        <h2 class="section-title" id="experience-title">Professional experience.</h2>
+        <p class="section-intro">Where I&rsquo;ve worked and what I&rsquo;ve shipped.</p>
+      </div>
+
+      <ul class="timeline">
+        <li class="reveal">
+          <p class="timeline-period">Internship · 6 months</p>
+          <h3 class="timeline-title">PHP Backend Developer</h3>
+          <p class="timeline-role">Longtail E-Media · Kathmandu, Nepal</p>
+          <p class="timeline-desc">Wrote and executed SQL queries to verify data accuracy across client systems, built server-side modules for data handling and form validation with PHP and MySQL, and helped resolve production issues during deployment. Contributed to live client websites including himalayantightlines.com, atithigroupnepal.com and jmt.org.np.</p>
+        </li>
+      </ul> 
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education" aria-labelledby="education-title">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow"><i>05</i><span>Education</span></p>
+        <h2 class="section-title" id="education-title">Education.</h2>
+        <p class="section-intro">Where I&rsquo;ve learned and what I've studied.</p>
+      </div>
+
+      <ul class="timeline">
+        <li class="reveal" data-delay="80">
+          <p class="timeline-period">B.Sc. CSIT · Completed</p>
+          <h3 class="timeline-title">Bachelor of Science in CSIT</h3>
+          <p class="timeline-role">Amrit Campus, Tribhuvan University</p>
+          <p class="timeline-desc">Completed the 8th-semester B.Sc. CSIT program, building strong foundations in programming, data structures, database systems and machine learning through coursework and collaborative projects.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+      <div>
+        <div class="reveal">
+          <p class="eyebrow"><i>06</i><span>Contact</span></p>
+          <h2 class="section-title" id="contact-title">Let&rsquo;s build something useful.</h2>
+          <p class="section-intro">Have a project in mind, a question, or just want to say hi? My inbox is always open.</p>
+        </div>
+
+        <div class="reveal" data-delay="100">
+          <p class="contact-links-label">Reach me directly</p>
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:shakyanitish55@gmail.com">
+                <span class="ic"><svg width="18" height="18" aria-hidden="true"><use href="#i-email"></use></svg></span>
+                <span class="meta"><b>Email</b><span>shakyanitish55@gmail.com</span></span>
+                <span class="arr" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">
+                <span class="ic"><svg width="18" height="18" aria-hidden="true"><use href="#i-github"></use></svg></span>
+                <span class="meta"><b>GitHub</b><span>github.com/shakyanitish</span></span>
+                <span class="arr" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/nitish-shakya" target="_blank" rel="noreferrer">
+                <span class="ic"><svg width="18" height="18" aria-hidden="true"><use href="#i-linkedin"></use></svg></span>
+                <span class="meta"><b>LinkedIn</b><span>linkedin.com/in/nitish-shakya</span></span>
+                <span class="arr" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+          <a class="resume-link" href="resume.pdf" download><svg width="16" height="16" aria-hidden="true"><use href="#i-file"></use></svg>Download résumé (PDF)</a>
+        </div>
+      </div>
+
+      <form class="form reveal" data-delay="120" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project…"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="btn btn--primary" type="submit">Send Message <span class="arr">↗</span></button>
+        </div>
+        <p class="form-status" id="form-status" role="status">Thanks for reaching out. This form is a demo — for a real response, email me directly at <a href="mailto:shakyanitish55@gmail.com">shakyanitish55@gmail.com</a>.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© <span id="year">2026</span> Nitish Shakya. Designed &amp; built by me.</p>
+    <div class="footer-links">
+      <a href="https://github.com/shakyanitish" target="_blank" rel="noreferrer" aria-label="GitHub">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-github"></use></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/nitish-shakya" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+      </a>
+      <a href="mailto:shakyanitish55@gmail.com" aria-label="Email">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-email"></use></svg>
+      </a>
     </div>
   </div>
+</footer>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Nitish Shakya, a passionate developer with expertise in frontend and backend technologies. 
-       I enjoy solving real-world problems by building efficient, elegant, and user-friendly applications. 
-       My goal is to continuously grow as a full-stack developer while exploring emerging fields like AI and cloud computing.</p>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li><b>Frontend Development:</b> Expertise in React.js, HTML5, CSS, JavaScript, and responsive design. Strong knowledge of animations, accessibility, and performance optimization.</li>
-      <li><b>Backend Development:</b> Proficient in Node.js, Express.js, and REST API design. Experienced in integrating MongoDB for scalable data storage.</li>
-      <li><b>Programming Languages:</b> Skilled in Python (machine learning, automation), Java (OOP, data structures), C, and C++ for problem-solving and algorithmic thinking.</li>
-      <li><b>Tools & Platforms:</b> Git/GitHub for version control, Vercel for deployment, Docker basics, and familiarity with Linux terminal workflow.</li>
-      <li><b>Soft Skills:</b> Strong communication, adaptability, critical thinking, and teamwork. I thrive in collaborative environments and enjoy mentoring peers.</li>
-    </ul>
-  </section>
-
-  <section id="github">
-    <h2>GitHub</h2>
-    <p>Explore my projects on GitHub: 
-      <a href="https://github.com/shakyanitish" target="_blank">https://github.com/shakyanitish</a>
-    </p>
-  </section>
-
-
+<script src="script.js" defer></script>
 </body>
 </html>
