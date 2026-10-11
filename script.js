@@ -96,14 +96,14 @@
   if (termCode) {
     var cvLines = [
       [{ c: "tp", t: "nitish@portfolio:~$ " }, { c: "tc", t: "whoami" }],
-      [{ c: "tk", t: "Nitish Shakya" }, { c: "to", t: " — Full Stack Developer & ML Enthusiast" }],
+      [{ c: "tk", t: "Nitish Shakya" }, { c: "to", t: " — Backend Developer (PHP · Laravel)" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "education" }],
       [{ c: "to", t: "B.Sc. CSIT · Amrit Campus, Tribhuvan University" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "experience" }],
-      [{ c: "to", t: "PHP Backend Developer (6 mo) · Longtail E-Media" }],
+      [{ c: "to", t: "PHP & Laravel Developer (1 yr) · Longtail E-Media" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "skills" }],
-      [{ c: "to", t: "Python  React  Next.js  Django  PHP  MySQL  MongoDB" }],
-      [{ c: "to", t: "SQL  TensorFlow  Keras  OpenCV  MediaPipe" }],
+      [{ c: "to", t: "PHP  Laravel  MySQL  Python  Django  Express  MongoDB" }],
+      [{ c: "to", t: "React  REST APIs  TensorFlow  OpenCV" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "projects" }],
       [{ c: "to", t: "Brain-Tumor-CNN  MediaPipe-Vision  Nepali-Chatbot" }],
       [{ c: "to", t: "Django-CMS  Developer-Portfolio" }]
@@ -170,46 +170,43 @@
     window.addEventListener("pagehide", function () { cancelled = true; });
   }
 
-  /* ---- contact form ---- */
+  /* ---- contact form ----
+     Paste your Formspree form ID below (the part after /f/ in https://formspree.io/f/xxxxxxxx).
+     While it is empty, the form falls back to opening the visitor's email app. */
+  var FORMSPREE_ID = "xaeqjvon";
+  var TO = "shakyanitish55@gmail.com";
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
   var submitBtn = form.querySelector("button[type=submit]");
-  var FORM_URL = "https://formspree.io/f/YOUR_FORM_ID";
+
+  function say(msg) { statusEl.classList.add("show"); statusEl.textContent = msg; }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
+    var name = form.querySelector("#name").value.trim();
+    var email = form.querySelector("#email").value.trim();
+    var message = form.querySelector("#message").value.trim();
 
-    var data = {
-      name: form.querySelector("#name").value,
-      email: form.querySelector("#email").value,
-      message: form.querySelector("#message").value
-    };
+    if (!FORMSPREE_ID) {
+      var body = message + "\n\n— " + name + " (" + email + ")";
+      window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Portfolio enquiry from " + name) + "&body=" + encodeURIComponent(body);
+      say("Opening your email app… if nothing happens, write to " + TO + " directly.");
+      return;
+    }
 
     submitBtn.disabled = true;
-    statusEl.classList.add("show");
-    statusEl.textContent = "Sending…";
-
-    fetch(FORM_URL, {
+    say("Sending…");
+    fetch("https://formspree.io/f/" + FORMSPREE_ID, {
       method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name, email: email, message: message })
     })
-      .then(function (res) { return res.json(); })
-      .then(function (json) {
-        if (json.ok) {
-          statusEl.textContent = "Thanks! Your message has been sent — I'll reply soon.";
-          form.reset();
-        } else {
-          statusEl.textContent = "Something went wrong. Please email me directly at shakyanitish55@gmail.com.";
-        }
+      .then(function (res) {
+        if (res.ok) { say("Thanks! Your message has been sent — I'll reply soon."); form.reset(); }
+        else { say("Something went wrong. Please email me directly at " + TO + "."); }
       })
-      .catch(function () {
-        statusEl.textContent = "Network error. Please email me directly at shakyanitish55@gmail.com.";
-      })
+      .catch(function () { say("Network error. Please email me directly at " + TO + "."); })
       .then(function () { submitBtn.disabled = false; });
   });
 

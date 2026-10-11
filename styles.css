@@ -298,3 +298,15 @@ img,svg{display:block;max-width:100%}
   .reveal{opacity:1;transform:none}
   .scroll-hint i::after{display:none}
 }
+
+/* Experience bullets */
+.timeline-points{margin-top:.9rem;display:grid;gap:.6rem}
+.timeline .timeline-points li{padding:0 0 0 1.1rem;display:block;color:var(--muted);font-size:.98rem}
+.timeline .timeline-points li::before{content:"";position:absolute;left:0;top:.7em;bottom:auto;width:.35rem;height:.35rem;border-radius:50%;background:var(--amber)}
+.timeline .timeline-points li::after{display:none}
+.timeline-points a{color:var(--emerald);text-decoration:underline;text-underline-offset:2px}
+.timeline .timeline-points .site-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.timeline .timeline-points .site-links li{padding:0;display:block}
+.timeline .timeline-points .site-links li::before{display:none}
+.timeline-points .site-links a{display:inline-block;text-decoration:none;font-size:.82rem;font-weight:500;padding:.3rem .75rem;border-radius:8px;background:var(--emerald-soft);color:var(--emerald-deep)}
+.timeline-points .site-links a:hover{background:var(--emerald);color:var(--paper)}
