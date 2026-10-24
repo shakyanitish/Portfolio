@@ -242,4 +242,27 @@
       expEl.textContent = parts.join(" ");
     }
   });
+
+  /* ---- hero experience duration (auto) ---- */
+  var heroExp = document.getElementById("hero-exp");
+  if (heroExp) {
+    var start = new Date("2025-10-27T00:00:00");
+    var now = new Date();
+
+    var totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) {
+      totalMonths--;
+    }
+    if (totalMonths < 0) totalMonths = 0;
+
+    var years = Math.floor(totalMonths / 12);
+    var months = totalMonths % 12;
+
+    var parts = [];
+    if (years > 0) parts.push(years + (years === 1 ? " year" : " years"));
+    if (months > 0) parts.push(months + (months === 1 ? " month" : " months"));
+    if (parts.length === 0) parts.push("less than a month");
+
+    heroExp.textContent = parts.join(" ");
+  }
 })();
