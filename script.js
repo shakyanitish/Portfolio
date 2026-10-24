@@ -214,10 +214,10 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ---- experience duration (auto) ---- */
-  var expEl = document.getElementById("exp-duration");
-  if (expEl && expEl.dataset.start) {
+  /* ---- timeline durations (auto) ---- */
+  document.querySelectorAll('.timeline-period[data-start]').forEach(function(expEl) {
     var startStr = expEl.dataset.start;
+    if (!startStr) return;
     var start = new Date(startStr + "T00:00:00");
     var now = new Date();
 
@@ -235,6 +235,11 @@
     if (months > 0) parts.push(months + (months === 1 ? " month" : " months"));
     if (parts.length === 0) parts.push("Less than a month");
 
-    expEl.textContent = "Internship · " + parts.join(" ");
-  }
+    var prefix = expEl.dataset.prefix;
+    if (prefix) {
+      expEl.textContent = prefix + " · " + parts.join(" ");
+    } else {
+      expEl.textContent = parts.join(" ");
+    }
+  });
 })();
