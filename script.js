@@ -94,16 +94,31 @@
   /* ---- hero CV terminal: type the CV in a loop ---- */
   var termCode = document.getElementById("term-code");
   if (termCode) {
+    function getExpText() {
+      var start = new Date("2025-10-27T00:00:00");
+      var now = new Date();
+      var totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+      if (now.getDate() < start.getDate()) totalMonths--;
+      if (totalMonths < 0) totalMonths = 0;
+      var years = Math.floor(totalMonths / 12);
+      var months = totalMonths % 12;
+      var parts = [];
+      if (years > 0) parts.push(years + (years === 1 ? " yr" : " yrs"));
+      if (months > 0) parts.push(months + (months === 1 ? " mo" : " mos"));
+      if (parts.length === 0) parts.push("less than 1 mo");
+      return "PHP & Laravel Developer (" + parts.join(" ") + ") · Longtail E-Media";
+    }
+
     var cvLines = [
       [{ c: "tp", t: "nitish@portfolio:~$ " }, { c: "tc", t: "whoami" }],
       [{ c: "tk", t: "Nitish Shakya" }, { c: "to", t: " — Backend Developer (PHP · Laravel)" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "education" }],
       [{ c: "to", t: "B.Sc. CSIT · Amrit Campus, Tribhuvan University" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "experience" }],
-      [{ c: "to", t: "PHP & Laravel Developer (1 yr) · Longtail E-Media" }],
+      [{ c: "to", t: getExpText() }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "skills" }],
-      [{ c: "to", t: "PHP  Laravel  MySQL  Python  Django  Express  MongoDB" }],
-      [{ c: "to", t: "React  REST APIs  TensorFlow  OpenCV" }],
+      [{ c: "to", t: "PHP  Laravel  MySQL  JavaScript  React  Next.js" }],
+      [{ c: "to", t: "Python  Django  TensorFlow  Keras  OpenCV  MediaPipe" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "projects" }],
       [{ c: "to", t: "Brain-Tumor-CNN  MediaPipe-Vision  Nepali-Chatbot" }],
       [{ c: "to", t: "Django-CMS  Developer-Portfolio" }]
