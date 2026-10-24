@@ -216,4 +216,28 @@
   /* ---- footer year ---- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---- experience duration (auto) ---- */
+  var expEl = document.getElementById("exp-duration");
+  if (expEl && expEl.dataset.start) {
+    var startStr = expEl.dataset.start;
+    var start = new Date(startStr + "T00:00:00");
+    var now = new Date();
+
+    var totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) {
+      totalMonths--;
+    }
+    if (totalMonths < 0) totalMonths = 0;
+
+    var years = Math.floor(totalMonths / 12);
+    var months = totalMonths % 12;
+
+    var parts = [];
+    if (years > 0) parts.push(years + (years === 1 ? " year" : " years"));
+    if (months > 0) parts.push(months + (months === 1 ? " month" : " months"));
+    if (parts.length === 0) parts.push("Less than a month");
+
+    expEl.textContent = "Internship · " + parts.join(" ");
+  }
 })();
