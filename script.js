@@ -4,6 +4,34 @@
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---- hero text types itself, one character after another, like the terminal ---- */
+  var typeEls = document.querySelectorAll("[data-stagger]");
+  if (!reducedMotion) {
+    // name and role are separate columns, so each types on its own, starting together
+    [".hero-title", ".hero-role"].forEach(function (column) {
+      var chars = [];
+      document.querySelectorAll(column + " [data-stagger]").forEach(function (el) {
+        var text = el.textContent;
+        el.textContent = "";
+        Array.from(text).forEach(function (ch) {
+          var s = document.createElement("span");
+          s.className = "type-char";
+          s.textContent = ch;
+          el.appendChild(s);
+          chars.push(s);
+        });
+      });
+      var typed = 0;
+      (function typeNext() {
+        if (typed >= chars.length) return;
+        if (typed) chars[typed - 1].classList.remove("cur");
+        chars[typed++].classList.add("on", "cur");
+        setTimeout(typeNext, 70);
+      })();
+    });
+  }
+  typeEls.forEach(function (el) { el.classList.add("is-staggered"); });
+
   /* ---- icosahedron wireframe generator ---- */
   function icosaLines() {
     var cx = 100, cy = 100, r1 = 64, r2 = 52, step = Math.PI * 2 / 5;
@@ -40,9 +68,42 @@
   }
   document.querySelectorAll("g.ico-lines").forEach(renderIcosa);
 
+  /* ---- hero cartoon: eyes and head follow the pointer ---- */
+  var man = document.getElementById("man");
+  if (man && !reducedMotion) {
+    window.addEventListener("pointermove", function (e) {
+      var r = man.getBoundingClientRect();
+      var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height * 0.43);
+      var d = Math.hypot(dx, dy) || 1, reach = Math.min(d / 25, 9);
+      man.style.setProperty("--x", (dx / d * reach) + "px");
+      man.style.setProperty("--y", (dy / d * reach) + "px");
+    }, { passive: true });
+  }
+
   /* ---- navbar: scrolled state ---- */
   var nav = document.getElementById("nav");
-  function onScroll() { nav.classList.toggle("is-scrolled", window.scrollY > 12); }
+  var intro = document.getElementById("intro");
+  // the intro eases toward the scroll position every frame, so wheel steps do not jerk the cartoon
+  var target = 0, current = 0, frame = 0;
+  function smoothstep(t) { return t * t * (3 - 2 * t); }
+  function between(value, start, end) {
+    return smoothstep(Math.max(0, Math.min(1, (value - start) / (end - start))));
+  }
+  function paint() {
+    current += (target - current) * (reducedMotion ? 1 : 0.1);
+    if (Math.abs(target - current) < 0.001) current = target;
+    intro.style.setProperty("--p", smoothstep(current));
+    intro.style.setProperty("--hero", 1 - between(current, 0.15, 0.65));
+    intro.style.setProperty("--t", between(current, 0.35, 0.85));
+    frame = current === target ? 0 : requestAnimationFrame(paint);
+  }
+  function onScroll() {
+    nav.classList.toggle("is-scrolled", window.scrollY > 12);
+    // 0 at the top, 1 just before the About screen is fully in view
+    target = Math.min(window.scrollY / (window.innerHeight * 0.85), 1);
+    if (reducedMotion) target = Math.round(target);
+    if (!frame) frame = requestAnimationFrame(paint);
+  }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -91,7 +152,7 @@
     revealEls.forEach(function (el) { revealObserver.observe(el); });
   }
 
-  /* ---- hero CV terminal: type the CV in a loop ---- */
+  /* ---- CV terminal: type the CV in a loop ---- */
   var termCode = document.getElementById("term-code");
   if (termCode) {
     function getExpText() {
