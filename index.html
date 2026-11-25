@@ -106,7 +106,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
     "jobTitle": "PHP Backend Developer",
     "description": "PHP Backend Developer based in Kathmandu, Nepal building clean, scalable web applications and exploring Machine Learning & Computer Vision.",
     "image": "https://nitishshakya.com.np/assets/nitish-shakya.jpg",
-    "knowsAbout": ["PHP", "MySQL", "JavaScript", "React", "Next.js", "Python", "Django", "TensorFlow", "Keras", "OpenCV", "MediaPipe", "Machine Learning", "Full Stack Development", "REST APIs"],
+    "knowsAbout": ["PHP", "Laravel", "MySQL", "JavaScript", "React", "Python", "Django", "TensorFlow", "OpenCV", "MediaPipe", "Machine Learning", "REST APIs", "JWT Authentication", "Webhooks", "Stripe", "Multi-tenant Architecture", "CMS Development", "Payment Gateway Integration", "Booking API Integration"],
     "worksFor": {
       "@type": "Organization",
       "name": "Longtail E-Media"
@@ -159,6 +159,13 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB23G37D" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <svg class="svg-defs" aria-hidden="true" focusable="false">
+  <g id="project-grid">
+    <rect width="800" height="600" fill="#f0eadf"/>
+    <g stroke="#d9cdba" stroke-width="1" opacity=".65">
+      <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
+      <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
+    </g>
+  </g>
   <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
   <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></symbol>
   <symbol id="i-email" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
@@ -373,185 +380,163 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
       <div class="reveal">
         <p class="eyebrow"><i>05</i><span>Projects</span></p>
         <h2 class="section-title" id="projects-title">Selected work.</h2>
-        <p class="section-intro">A few things I&rsquo;ve built &mdash; each one a real problem I wanted to solve, from medical imaging to everyday interfaces.</p>
+        <p class="section-intro">My strongest backend work: CMS systems, banking and payment integrations, webhooks and JWT-secured APIs.</p>
       </div>
 
       <div class="projects-list">
 
-        <!-- 01 Brain Tumor -->
+        <!-- 01 CMS system -->
         <article class="project reveal">
           <div class="project-media">
-            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of an MRI brain scan with a highlighted detection region">
-              <rect width="800" height="600" fill="#f0eadf"/>
-              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
-                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
-                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
-              </g>
-              <path d="M 430 128 C 522 128 557 205 557 285 C 557 365 517 426 462 454 L 426 454 C 453 426 464 400 464 380 C 464 360 432 352 414 362 C 387 374 347 398 337 464 L 306 464 C 306 374 332 317 332 285 C 332 190 362 128 430 128 Z" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
-              <g stroke="#d9cdba" stroke-width="1.5" fill="none">
-                <ellipse cx="430" cy="300" rx="112" ry="142"/><ellipse cx="430" cy="300" rx="84" ry="108"/><ellipse cx="430" cy="300" rx="56" ry="72"/>
-                <path d="M 322 285 C 322 232 350 180 390 158"/><path d="M 538 285 C 538 232 510 180 470 158"/>
-              </g>
-              <g stroke="#0e6e55" stroke-width="2"><path d="M 466 300 v 60 M 434 330 h 64"/><circle cx="466" cy="330" r="15" fill="none" stroke-dasharray="3 5"/></g>
-              <circle cx="466" cy="330" r="7" fill="#0e6e55"/>
-              <text x="40" y="70" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">MRI · T1</text>
-              <text x="40" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DETECTED · 1</text>
-              <circle cx="44" cy="545" r="5" fill="#0e6e55"/>
-              <text x="720" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">CNN</text>
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a static website being converted into a dynamic database-driven site">
+              <use href="#project-grid"/>
+              <rect x="70" y="150" width="280" height="270" rx="8" fill="#f0eadf" stroke="#221b13" stroke-width="2"/>
+              <g fill="#d9cdba"><rect x="100" y="190" width="130" height="10" rx="5"/><rect x="100" y="220" width="200" height="7" rx="3.5"/><rect x="100" y="240" width="180" height="7" rx="3.5"/><rect x="100" y="270" width="90" height="60" rx="4"/></g>
+              <rect x="100" y="350" width="90" height="20" rx="10" fill="#d9cdba"/>
+              <path d="M350 285 H440" stroke="#0e6e55" stroke-width="3" fill="none"/>
+              <path d="M440 285 l-14 -8 v16 z" fill="#0e6e55"/>
+              <text x="395" y="260" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#0e6e55">MIGRATE</text>
+              <rect x="450" y="150" width="280" height="270" rx="8" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <g fill="#e3efe8" stroke="#0e6e55" stroke-width="2"><rect x="480" y="190" width="220" height="28" rx="6"/><rect x="480" y="232" width="90" height="130" rx="6"/><rect x="590" y="232" width="110" height="58" rx="6"/><rect x="590" y="304" width="110" height="58" rx="6"/></g>
+              <g fill="#0e6e55"><circle cx="600" cy="261" r="4"/><circle cx="600" cy="333" r="4"/></g>
+              <text x="70" y="105" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">STATIC</text>
+              <text x="590" y="105" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DYNAMIC</text>
+              <text x="70" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">CMS · DATABASE</text>
             </svg>
           </div>
           <div class="project-body">
-            <p class="project-tag"><span class="num">01</span><span>Deep learning · Computer vision</span></p>
-            <h3 class="project-title">Brain Tumor Detection Using CNN</h3>
-            <p class="project-desc">Designed and trained a CNN on MRI data, managing the full pipeline from image ingestion to model evaluation. Data augmentation and fine-tuning were applied to improve classification reliability.</p>
-            <ul class="project-stack"><li>Python</li><li>TensorFlow</li><li>Keras</li><li>CNN</li></ul>
+            <p class="project-tag"><span class="num">01</span><span>Backend · CMS &amp; integration</span></p>
+            <h3 class="project-title">Customized CMS &amp; Room Booking System</h3>
+            <p class="project-desc">Built customized CMS systems for clients, with the backend and APIs that turn static websites into database-driven ones, integrated with the live front end. Developed a room booking system and admin modules for pages, packages, blogs, galleries, careers and enquiry forms with role-based access, media uploads and SEO fields, plus third-party booking widget integration (Exely).</p>
+            <ul class="project-stack"><li>PHP</li><li>Laravel</li><li>MySQL</li><li>REST API</li><li>CMS</li><li>Room Booking</li><li>Exely</li></ul>
             <div class="project-links">
               <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- 02 Hand & Face Detection -->
+        <!-- 02 Banking & payment -->
         <article class="project project--flip reveal">
           <div class="project-media">
-            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a face inside a detection frame with corner brackets">
-              <rect width="800" height="600" fill="#f0eadf"/>
-              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
-                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
-                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
-              </g>
-              <clipPath id="fc"><rect x="300" y="150" width="200" height="300" rx="100"/></clipPath>
-              <g clip-path="url(#fc)" stroke="#d9cdba" stroke-width="1.5"><line x1="300" y1="210" x2="500" y2="210"/><line x1="300" y1="270" x2="500" y2="270"/><line x1="300" y1="330" x2="500" y2="330"/><line x1="300" y1="390" x2="500" y2="390"/><line x1="340" y1="150" x2="340" y2="450"/><line x1="400" y1="150" x2="400" y2="450"/><line x1="460" y1="150" x2="460" y2="450"/></g>
-              <rect x="300" y="150" width="200" height="300" rx="100" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
-              <circle cx="358" cy="260" r="7" fill="#221b13"/><circle cx="442" cy="260" r="7" fill="#221b13"/>
-              <path d="M 400 272 L 400 300 M 386 312 Q 400 322 414 312" stroke="#221b13" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <g stroke="#0e6e55" stroke-width="4" stroke-linecap="round"><path d="M 250 132 V 100 H 282"/><path d="M 518 100 H 550 V 132"/><path d="M 250 468 V 500 H 282"/><path d="M 518 500 H 550 V 468"/></g>
-              <text x="620" y="90" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">MEDIAPIPE</text>
-              <text x="620" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">LIVE · HAND &amp; FACE</text>
-              <circle cx="44" cy="545" r="5" fill="#0e6e55"/>
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a payment card connected to a bank with transaction arrows">
+              <use href="#project-grid"/>
+              <path d="M120 250 L400 130 L680 250 Z" fill="#0e6e55"/>
+              <rect x="140" y="250" width="520" height="210" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <g stroke="#0e6e55" stroke-width="2"><path d="M210 300 V420"/><path d="M330 300 V420"/><path d="M450 300 V420"/><path d="M570 300 V420"/></g>
+              <path d="M140 460 H660" stroke="#221b13" stroke-width="2"/>
+              <rect x="480" y="160" width="190" height="120" rx="12" fill="#c26b2a"/>
+              <rect x="505" y="195" width="70" height="9" rx="4" fill="#fdfaf3" opacity=".8"/>
+              <rect x="505" y="220" width="100" height="7" rx="3.5" fill="#fdfaf3" opacity=".6"/>
+              <circle cx="645" cy="245" r="12" fill="#fdfaf3" opacity=".7"/>
+              <path d="M400 130 V100" stroke="#221b13" stroke-width="2"/>
+              <path d="M400 100 L470 118 L400 136 Z" fill="#c26b2a"/>
+              <path d="M670 285 C720 330 690 400 620 430" stroke="#c26b2a" stroke-width="3" fill="none"/>
+              <path d="M620 430 l16 -4 l-8 -14" fill="none" stroke="#c26b2a" stroke-width="3" stroke-linejoin="round"/>
+              <text x="80" y="85" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">BANKING · PAYMENT</text>
+              <text x="80" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">CALLBACK · WEBHOOK</text>
             </svg>
           </div>
           <div class="project-body">
-            <p class="project-tag"><span class="num">02</span><span>Computer vision · Real-time</span></p>
-            <h3 class="project-title">MediaPipe Hand &amp; Face Detection</h3>
-            <p class="project-desc">Built real-time gesture recognition and facial landmark tracking with Python and OpenCV, evaluating detection accuracy across varied lighting and camera conditions.</p>
-            <ul class="project-stack"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul>
+            <p class="project-tag"><span class="num">02</span><span>PHP &amp; Laravel · Integrations</span></p>
+            <h3 class="project-title">Banking &amp; Payment Gateway Integration</h3>
+            <p class="project-desc">Integrated banking and payment APIs to initiate transactions, handle callbacks and verify payment status. Added transaction logging, status reconciliation and failure handling for reliable records.</p>
+            <ul class="project-stack"><li>PHP</li><li>Laravel</li><li>Payment APIs</li><li>Webhooks</li><li>MySQL</li></ul>
             <div class="project-links">
               <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- 03 Chatbot -->
+        <!-- 03 REST API & JWT -->
         <article class="project reveal">
           <div class="project-media">
-            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of two chat bubbles with a translation arrow between them">
-              <rect width="800" height="600" fill="#f0eadf"/>
-              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
-                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
-                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
-              </g>
-              <rect x="150" y="130" width="260" height="112" rx="18" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
-              <g fill="#d9cdba"><rect x="185" y="160" width="140" height="8" rx="4"/><rect x="185" y="182" width="96" height="8" rx="4"/></g>
-              <circle cx="196" cy="214" r="5" fill="#0e6e55"/>
-              <text x="420" y="128" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">en</text>
-              <path d="M 420 214 C 478 240 452 288 410 318" stroke="#0e6e55" stroke-width="2" fill="none" stroke-dasharray="6 7"/>
-              <path d="M 410 318 l -12 4 l 8 11" fill="none" stroke="#0e6e55" stroke-width="2" stroke-linejoin="round"/>
-              <rect x="340" y="320" width="300" height="122" rx="18" fill="#0e6e55"/>
-              <g fill="#fdfaf3" opacity=".85"><rect x="375" y="352" width="150" height="8" rx="4"/><rect x="375" y="374" width="118" height="8" rx="4"/></g>
-              <path d="M 375 414 l 5 8 9 -16 9 16 9 -16" stroke="#fdfaf3" stroke-width="2" fill="none" stroke-linejoin="round" opacity=".9"/>
-              <text x="608" y="452" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">np</text>
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a REST API with request and response arrows">
+              <use href="#project-grid"/>
+              <rect x="90" y="180" width="180" height="150" rx="12" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <text x="180" y="245" text-anchor="middle" font-family="ui-monospace,monospace" font-size="22" fill="#221b13">CLIENT</text>
+              <text x="180" y="275" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#9a8f7f">REQUEST</text>
+              <rect x="520" y="130" width="190" height="250" rx="12" fill="#0e6e55"/>
+              <g fill="#fdfaf3" opacity=".85"><rect x="548" y="170" width="110" height="9" rx="4"/><rect x="548" y="200" width="80" height="9" rx="4"/><rect x="548" y="230" width="125" height="9" rx="4"/><rect x="548" y="260" width="95" height="9" rx="4"/><rect x="548" y="290" width="70" height="9" rx="4"/></g>
+              <path d="M270 230 C350 230 440 230 520 230" stroke="#0e6e55" stroke-width="3" fill="none"/>
+              <path d="M520 230 l-14 -8 v16 z" fill="#0e6e55"/>
+              <path d="M520 320 C440 320 350 320 270 320" stroke="#c26b2a" stroke-width="3" fill="none"/>
+              <path d="M270 320 l14 -8 v16 z" fill="#c26b2a"/>
+              <text x="385" y="210" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#0e6e55">GET / POST</text>
+              <text x="385" y="355" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#c26b2a">JSON RESPONSE</text>
+              <text x="90" y="85" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">REST · API · AUTH</text>
+              <text x="560" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">LARAVEL</text>
             </svg>
           </div>
           <div class="project-body">
-            <p class="project-tag"><span class="num">03</span><span>Full stack · Bilingual</span></p>
-            <h3 class="project-title">English to Nepali Chatbot</h3>
-            <p class="project-desc">A full stack chat application that translates English input into Nepali. Built with persistent storage, a custom Express and MongoDB backend, and real-time translation integration.</p>
-            <ul class="project-stack"><li>React.js</li><li>Tailwind CSS</li><li>Express.js</li><li>MongoDB</li></ul>
+            <p class="project-tag"><span class="num">03</span><span>PHP &amp; Laravel · API development</span></p>
+            <h3 class="project-title">REST API Development &amp; JWT Auth</h3>
+            <p class="project-desc">Designed versioned REST endpoints with JWT token authentication, request validation, pagination and consistent JSON error responses. Used API resources and queued jobs to keep responses fast and maintainable.</p>
+            <ul class="project-stack"><li>PHP</li><li>Laravel</li><li>REST</li><li>MySQL</li><li>JWT</li></ul>
             <div class="project-links">
               <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- 04 CMS -->
+        <!-- 04 Client websites -->
         <article class="project project--flip reveal">
           <div class="project-media">
-            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a content management system admin panel">
-              <rect width="800" height="600" fill="#f0eadf"/>
-              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
-                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
-                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
-              </g>
-              <path d="M 100 132 V 104 C 100 96.3 106.3 90 114 90 H 686 C 693.7 90 700 96.3 700 104 V 132 Z" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
-              <rect x="100" y="132" width="600" height="388" fill="none" stroke="#221b13" stroke-width="2"/>
-              <circle cx="142" cy="111" r="5" fill="#0e6e55"/><circle cx="167" cy="111" r="5" fill="#d9cdba"/><circle cx="192" cy="111" r="5" fill="#d9cdba"/>
-              <rect x="112" y="148" width="152" height="358" rx="8" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1.5"/>
-              <g><rect x="132" y="180" width="14" height="14" rx="4" fill="#0e6e55"/><rect x="156" y="184" width="74" height="6" rx="3" fill="#221b13"/></g>
-              <g><rect x="132" y="218" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="222" width="74" height="6" rx="3" fill="#d9cdba"/></g>
-              <g><rect x="132" y="256" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="260" width="74" height="6" rx="3" fill="#d9cdba"/></g>
-              <g><rect x="132" y="294" width="14" height="14" rx="4" fill="#d9cdba"/><rect x="156" y="298" width="74" height="6" rx="3" fill="#d9cdba"/></g>
-              <rect x="288" y="158" width="210" height="14" rx="4" fill="#221b13"/>
-              <rect x="288" y="186" width="120" height="7" rx="3.5" fill="#d9cdba"/>
-              <rect x="288" y="214" width="150" height="30" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
-              <rect x="456" y="214" width="76" height="30" rx="8" fill="#0e6e55"/>
-              <rect x="288" y="264" width="398" height="30" rx="6" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1.5"/>
-              <g fill="#d9cdba"><rect x="304" y="278" width="70" height="6" rx="3"/><rect x="404" y="278" width="90" height="6" rx="3"/><rect x="524" y="278" width="60" height="6" rx="3"/><rect x="614" y="278" width="52" height="6" rx="3"/></g>
-              <rect x="288" y="302" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="314" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="314" width="110" height="7" rx="3.5" fill="#d9cdba"/><circle cx="560" cy="318" r="4" fill="#0e6e55"/><rect x="624" y="313" width="40" height="9" rx="4.5" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1"/>
-              <rect x="288" y="338" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="350" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="350" width="110" height="7" rx="3.5" fill="#d9cdba"/><rect x="624" y="349" width="40" height="9" rx="4.5" fill="#f7f2e9" stroke="#d9cdba" stroke-width="1"/>
-              <rect x="288" y="374" width="398" height="32" rx="6" fill="none" stroke="#d9cdba" stroke-width="1.5"/><rect x="304" y="386" width="80" height="7" rx="3.5" fill="#d9cdba"/><rect x="404" y="386" width="110" height="7" rx="3.5" fill="#d9cdba"/><rect x="624" y="385" width="40" height="9" rx="4.5" fill="#d9cdba"/>
-              <circle cx="634" cy="452" r="5" fill="#d9cdba"/><circle cx="654" cy="452" r="5" fill="#0e6e55"/><circle cx="674" cy="452" r="5" fill="#d9cdba"/>
-              <text x="120" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DJANGO · CMS</text>
-              <text x="702" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">ADMIN</text>
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a Laravel content management dashboard">
+              <use href="#project-grid"/>
+              <rect x="100" y="120" width="600" height="360" rx="10" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <path d="M100 175 H700" stroke="#221b13" stroke-width="2"/>
+              <circle cx="135" cy="147" r="5" fill="#0e6e55"/><circle cx="155" cy="147" r="5" fill="#d9cdba"/><circle cx="175" cy="147" r="5" fill="#d9cdba"/>
+              <rect x="120" y="195" width="150" height="265" rx="6" fill="#f0eadf" stroke="#d9cdba" stroke-width="1.5"/>
+              <g fill="#0e6e55"><rect x="140" y="220" width="12" height="12" rx="3"/><rect x="140" y="256" width="12" height="12" rx="3"/><rect x="140" y="292" width="12" height="12" rx="3"/><rect x="140" y="328" width="12" height="12" rx="3"/></g>
+              <g fill="#9a8f7f"><rect x="162" y="224" width="78" height="6" rx="3"/><rect x="162" y="260" width="62" height="6" rx="3"/><rect x="162" y="296" width="86" height="6" rx="3"/><rect x="162" y="332" width="70" height="6" rx="3"/></g>
+              <rect x="300" y="195" width="380" height="26" rx="5" fill="#221b13"/>
+              <rect x="300" y="238" width="100" height="28" rx="8" fill="#0e6e55"/>
+              <rect x="410" y="238" width="80" height="28" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
+              <g fill="none" stroke="#d9cdba" stroke-width="1.5"><rect x="300" y="285" width="380" height="36" rx="5"/><rect x="300" y="331" width="380" height="36" rx="5"/><rect x="300" y="377" width="380" height="36" rx="5"/></g>
+              <g fill="#d9cdba"><rect x="316" y="299" width="110" height="7" rx="3.5"/><rect x="316" y="345" width="150" height="7" rx="3.5"/><rect x="316" y="391" width="90" height="7" rx="3.5"/></g>
+              <g fill="#0e6e55"><circle cx="648" cy="302" r="4"/><circle cx="648" cy="348" r="4"/><circle cx="648" cy="394" r="4"/></g>
+              <text x="100" y="85" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">LARAVEL · CMS</text>
+              <text x="560" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">ADMIN</text>
             </svg>
           </div>
           <div class="project-body">
-            <p class="project-tag"><span class="num">04</span><span>Backend · Content management</span></p>
-            <h3 class="project-title">Django Backend CMS System</h3>
-            <p class="project-desc">A full CMS backend with CRUD operations for articles, users and categories. Includes role-based authentication and structured SQL queries for secure, efficient data access.</p>
-            <ul class="project-stack"><li>Python</li><li>Django</li><li>MySQL</li></ul>
+            <p class="project-tag"><span class="num">04</span><span>PHP &amp; Laravel · Client delivery</span></p>
+            <h3 class="project-title">Client Website Development &amp; Maintenance</h3>
+            <p class="project-desc">Developed and maintained live client websites in PHP and Laravel, working with senior developers to turn client requirements into delivered features.</p>
+            <ul class="project-stack"><li>PHP</li><li>Laravel</li><li>MySQL</li><li>Blade</li></ul>
             <div class="project-links">
               <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
         </article>
 
-        <!-- 05 Portfolio -->
+        <!-- 05 Database & production support -->
         <article class="project reveal">
           <div class="project-media">
-            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a browser window showing a website wireframe layout">
-              <rect width="800" height="600" fill="#f0eadf"/>
-              <g stroke="#d9cdba" stroke-width="1" opacity=".65">
-                <line x1="80" y1="0" x2="80" y2="600"/><line x1="160" y1="0" x2="160" y2="600"/><line x1="240" y1="0" x2="240" y2="600"/><line x1="320" y1="0" x2="320" y2="600"/><line x1="400" y1="0" x2="400" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/><line x1="560" y1="0" x2="560" y2="600"/><line x1="640" y1="0" x2="640" y2="600"/><line x1="720" y1="0" x2="720" y2="600"/>
-                <line x1="0" y1="75" x2="800" y2="75"/><line x1="0" y1="150" x2="800" y2="150"/><line x1="0" y1="225" x2="800" y2="225"/><line x1="0" y1="300" x2="800" y2="300"/><line x1="0" y1="375" x2="800" y2="375"/><line x1="0" y1="450" x2="800" y2="450"/><line x1="0" y1="525" x2="800" y2="525"/>
-              </g>
-              <rect x="100" y="90" width="600" height="424" rx="14" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
-              <path d="M 100 132 V 104 C 100 96.3 106.3 90 114 90 H 686 C 693.7 90 700 96.3 700 104 V 132 Z" fill="#f0eadf" stroke="#221b13" stroke-width="2"/>
-              <circle cx="142" cy="111" r="5" fill="#0e6e55"/><circle cx="167" cy="111" r="5" fill="#d9cdba"/><circle cx="192" cy="111" r="5" fill="#d9cdba"/>
-              <rect x="128" y="156" width="112" height="318" rx="8" fill="#f0eadf" stroke="#d9cdba" stroke-width="1.5"/>
-              <g fill="#d9cdba"><rect x="148" y="180" width="72" height="7" rx="3.5"/><rect x="148" y="202" width="54" height="7" rx="3.5"/><rect x="148" y="224" width="64" height="7" rx="3.5"/><rect x="148" y="246" width="48" height="7" rx="3.5"/></g>
-              <rect x="148" y="290" width="56" height="22" rx="11" fill="#221b13"/>
-              <rect x="270" y="162" width="210" height="15" rx="4" fill="#221b13"/>
-              <rect x="270" y="190" width="150" height="9" rx="4" fill="#d9cdba"/><rect x="270" y="210" width="176" height="9" rx="4" fill="#d9cdba"/>
-              <rect x="270" y="242" width="150" height="128" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
-              <g stroke="#0e6e55" stroke-width="1.5"><path d="M 345 268 l 26 0 13 22 -13 22 -26 0 -13 -22 z" fill="#fdfaf3"/><path d="M 345 268 l 0 44 M 371 268 l 0 44 M 332 290 l 26 0 M 332 312 l 26 0"/></g>
-              <rect x="440" y="242" width="232" height="128" rx="8" fill="none" stroke="#d9cdba" stroke-width="1.5"/>
-              <g fill="#d9cdba"><rect x="464" y="272" width="120" height="8" rx="4"/><rect x="464" y="294" width="92" height="8" rx="4"/></g>
-              <rect x="464" y="322" width="66" height="22" rx="11" fill="none" stroke="#221b13" stroke-width="1.5"/>
-              <rect x="270" y="398" width="130" height="9" rx="4" fill="#d9cdba"/><rect x="270" y="418" width="92" height="9" rx="4" fill="#d9cdba"/><rect x="440" y="398" width="150" height="9" rx="4" fill="#d9cdba"/><rect x="440" y="418" width="104" height="9" rx="4" fill="#d9cdba"/>
-              <text x="120" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">HTML · CSS · JS</text>
-              <circle cx="744" cy="545" r="5" fill="#0e6e55"/>
-              <text x="702" y="565" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DEPLOYED</text>
+            <svg viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of a backend system with a database and admin modules">
+              <use href="#project-grid"/>
+              <ellipse cx="300" cy="170" rx="120" ry="32" fill="#0e6e55"/>
+              <path d="M180 170 V400 C180 418 232 432 300 432 C368 432 420 418 420 400 V170" fill="#0e6e55"/>
+              <ellipse cx="300" cy="230" rx="120" ry="32" fill="none" stroke="#fdfaf3" stroke-width="2" opacity=".6"/>
+              <ellipse cx="300" cy="300" rx="120" ry="32" fill="none" stroke="#fdfaf3" stroke-width="2" opacity=".6"/>
+              <ellipse cx="300" cy="370" rx="120" ry="32" fill="none" stroke="#fdfaf3" stroke-width="2" opacity=".6"/>
+              <rect x="480" y="150" width="240" height="300" rx="10" fill="#fdfaf3" stroke="#221b13" stroke-width="2"/>
+              <path d="M480 205 H720" stroke="#221b13" stroke-width="2"/>
+              <g fill="#e3efe8" stroke="#0e6e55" stroke-width="2"><rect x="510" y="235" width="80" height="56" rx="6"/><rect x="610" y="235" width="80" height="56" rx="6"/><rect x="510" y="315" width="80" height="56" rx="6"/><rect x="610" y="315" width="80" height="56" rx="6"/></g>
+              <rect x="510" y="395" width="180" height="28" rx="8" fill="#c26b2a"/>
+              <path d="M420 285 H480" stroke="#0e6e55" stroke-width="3" fill="none"/>
+              <path d="M480 285 l-14 -8 v16 z" fill="#0e6e55"/>
+              <text x="80" y="90" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">DATABASE · ADMIN</text>
+              <text x="520" y="555" font-family="ui-monospace,monospace" font-size="18" letter-spacing=".16em" fill="#9a8f7f">BACKEND SYSTEM</text>
             </svg>
           </div>
           <div class="project-body">
-            <p class="project-tag"><span class="num">05</span><span>Frontend · Interactive UI</span></p>
-            <h3 class="project-title">Developer Portfolio</h3>
-            <p class="project-desc">The site you&rsquo;re looking at &mdash; built as a simple, fast static page with an animated geometric signature and restrained motion.</p>
-            <ul class="project-stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <p class="project-tag"><span class="num">05</span><span>PHP &amp; Laravel · Production support</span></p>
+            <h3 class="project-title">Database Queries &amp; Production Support</h3>
+            <p class="project-desc">Wrote and ran SQL queries to verify data accuracy, and helped diagnose and resolve production issues during deployment.</p>
+            <ul class="project-stack"><li>PHP</li><li>Laravel</li><li>MySQL</li><li>SQL</li><li>Deployment</li></ul>
             <div class="project-links">
               <a class="btn btn--ghost" href="https://github.com/shakyanitish" target="_blank" rel="noreferrer">GitHub</a>
-              <a class="demo" href="https://nitishshakya.com.np/" target="_blank" rel="noreferrer">Live Demo <span class="arr">↗</span></a>
             </div>
           </div>
         </article>

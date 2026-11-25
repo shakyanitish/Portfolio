@@ -120,8 +120,8 @@
       [{ c: "to", t: "PHP  Laravel  MySQL  JavaScript  React  Next.js" }],
       [{ c: "to", t: "Python  Django  TensorFlow  Keras  OpenCV  MediaPipe" }],
       [{ c: "tp", t: "$ " }, { c: "tc", t: "projects" }],
-      [{ c: "to", t: "Brain-Tumor-CNN  MediaPipe-Vision  Nepali-Chatbot" }],
-      [{ c: "to", t: "Django-CMS  Developer-Portfolio" }]
+      [{ c: "to", t: "Custom-CMS  Payment-Gateway  REST-API-JWT" }],
+      [{ c: "to", t: "Client-Websites  Production-Support" }]
     ];
     var cursor = document.createElement("span");
     cursor.className = "term-cursor";
@@ -205,21 +205,39 @@
 
     if (!FORMSPREE_ID) {
       var body = message + "\n\n— " + name + " (" + email + ")";
-      window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Portfolio enquiry from " + name) + "&body=" + encodeURIComponent(body);
       say("Opening your email app… if nothing happens, write to " + TO + " directly.");
+      form.reset();
+      window.location.href = "mailto:" + TO + "?subject=" + encodeURIComponent("Portfolio enquiry from " + name) + "&body=" + encodeURIComponent(body);
       return;
     }
 
     submitBtn.disabled = true;
     say("Sending…");
+    var data = new FormData(form);
+    data.set("name", name);
+    data.set("email", email);
+    data.set("message", message);
+    data.append("_subject", "Portfolio enquiry from " + name);
+
     fetch("https://formspree.io/f/" + FORMSPREE_ID, {
       method: "POST",
-      headers: { "Accept": "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name, email: email, message: message })
+      body: data,
+      headers: { "Accept": "application/json" }
     })
       .then(function (res) {
-        if (res.ok) { say("Thanks! Your message has been sent — I'll reply soon."); form.reset(); }
-        else { say("Something went wrong. Please email me directly at " + TO + "."); }
+        return res.json().catch(function () { return {}; }).then(function (json) {
+          return { ok: res.ok, status: res.status, body: json };
+        });
+      })
+      .then(function (result) {
+        if (result.ok) {
+          form.reset();
+          say("Thanks! Your message has been sent — I'll reply soon.");
+          return;
+        }
+        var errors = result.body && result.body.errors;
+        var detail = errors && errors[0] && errors[0].message;
+        say("Message not sent (" + result.status + ")" + (detail ? ": " + detail : "") + ". Email me directly at " + TO + ".");
       })
       .catch(function () { say("Network error. Please email me directly at " + TO + "."); })
       .then(function () { submitBtn.disabled = false; });
