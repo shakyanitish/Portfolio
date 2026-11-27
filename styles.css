@@ -175,11 +175,10 @@ img,svg{display:block;max-width:100%}
 
 .svg-defs{display:none}
 
-.scroll-hint{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:none;flex-direction:column;align-items:center;gap:.55rem;color:var(--faint);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase}
+.scroll-hint{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.55rem;color:var(--faint);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase}
 .scroll-hint i{width:1px;height:2.2rem;background:var(--faint);position:relative;overflow:hidden}
 .scroll-hint i::after{content:"";position:absolute;inset:0;background:var(--emerald);transform:translateY(-100%);animation:scrollDot 2.2s var(--ease) infinite}
 @keyframes scrollDot{0%{transform:translateY(-100%)}55%,100%{transform:translateY(100%)}}
-@media(min-width:768px){.scroll-hint{display:flex}}
 
 /* ------------------------------------------------------------------ */
 /*  Skills                                                              */
@@ -227,6 +226,12 @@ img,svg{display:block;max-width:100%}
 /* ------------------------------------------------------------------ */
 /*  Experience                                                          */
 /* ------------------------------------------------------------------ */
+.education-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:1024px){
+  .education-grid{grid-template-columns:minmax(0,1fr) minmax(0,28rem);gap:4rem}
+}
+.education-visual{display:flex;justify-content:center}
+.education-art{width:100%;max-width:30rem;height:auto;display:block}
 .timeline{margin-top:3.5rem;max-width:40rem}
 .timeline li{position:relative;padding-left:2.9rem;padding-bottom:3.4rem}
 .timeline li:last-child{padding-bottom:0}
@@ -242,6 +247,33 @@ img,svg{display:block;max-width:100%}
 .highlights ul{margin-top:1.2rem;display:grid;gap:.85rem}
 .highlights li{display:flex;gap:.85rem;color:var(--muted);font-size:.98rem}
 .highlights li::before{content:"";flex:none;width:.45rem;height:.45rem;border-radius:50%;background:var(--amber);margin-top:.55rem}
+
+/* Experience/Education SVG animations */
+.ed-float{transform-origin:260px 260px;animation:sceneFloat 8s ease-in-out -1.5s infinite}
+.ed-shadow{transform-origin:center;animation:shadowPulse 8s ease-in-out -1.5s infinite}
+.ed-orbit{transform-origin:260px 250px;animation:orbitSpin 30s linear infinite reverse}
+.ed-cap-group{transform-origin:260px 175px;animation:capBob 6s ease-in-out infinite}
+.ed-tassel{transform-origin:260px 175px;animation:tasselSwing 3.5s ease-in-out infinite}
+.ed-book{transform-origin:260px 350px;animation:bookFloat 7s ease-in-out -1s infinite}
+.ed-page{stroke-dasharray:100;stroke-dashoffset:100;animation:codeDraw 6s ease-in-out infinite}
+.ed-page.p2{animation-delay:.4s}.ed-page.p3{animation-delay:.8s}.ed-page.p4{animation-delay:1.2s}
+.ed-badge{animation:badgeFloat 5.5s ease-in-out -.5s infinite;transform-origin:405px 320px}
+.ed-bar{transform-box:fill-box;transform-origin:bottom;animation:barGrow 3.6s ease-in-out infinite}
+.ed-bar.b2{animation-delay:.25s}.ed-bar.b3{animation-delay:.5s}
+.ed-star{transform-box:fill-box;transform-origin:center;animation:starTwinkle 3s ease-in-out infinite}
+.ed-star.s2{animation-delay:1.2s}
+
+@keyframes sceneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shadowPulse{0%,100%{transform:scaleX(1);opacity:.07}50%{transform:scaleX(.88);opacity:.04}}
+@keyframes orbitSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes codeDraw{0%,15%{stroke-dashoffset:160;opacity:.2}35%,75%{stroke-dashoffset:0;opacity:1}90%,100%{stroke-dashoffset:0;opacity:.35}}
+@keyframes capBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1deg)}}
+@keyframes tasselSwing{0%,100%{transform:rotate(0deg)}25%{transform:rotate(4deg)}75%{transform:rotate(-3deg)}}
+@keyframes bookFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes barGrow{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.72)}}
+@keyframes starTwinkle{0%,100%{opacity:.45;transform:scale(.9) rotate(0deg)}50%{opacity:1;transform:scale(1.1) rotate(12deg)}}
+
 
 /* ------------------------------------------------------------------ */
 /*  Contact                                                             */
@@ -300,17 +332,117 @@ img,svg{display:block;max-width:100%}
   .scroll-hint i::after{display:none}
 }
 
-/* Experience bullets */
-.timeline-points{margin-top:.9rem;display:grid;gap:.6rem}
-.timeline .timeline-points li{padding:0 0 0 1.1rem;display:block;color:var(--muted);font-size:.98rem}
-.timeline .timeline-points li::before{content:"";position:absolute;left:0;top:.7em;bottom:auto;width:.35rem;height:.35rem;border-radius:50%;background:var(--amber)}
+/* Experience/Education details */
+.timeline-points{margin-top:1rem;display:grid;gap:.7rem}
+.timeline .timeline-points li{padding:0 0 0 1.15rem;display:block;color:var(--muted);font-size:.95rem;line-height:1.65}
+.timeline .timeline-points li::before{content:"";position:absolute;left:0;top:.72em;bottom:auto;width:.35rem;height:.35rem;border-radius:50%;background:var(--amber)}
 .timeline .timeline-points li::after{display:none}
-.timeline-points a{color:var(--emerald);text-decoration:underline;text-underline-offset:2px}
-.timeline .timeline-points .site-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
-.timeline .timeline-points .site-links li{padding:0;display:block}
-.timeline .timeline-points .site-links li::before{display:none}
-.timeline-points .site-links a{display:inline-block;text-decoration:none;font-size:.82rem;font-weight:500;padding:.3rem .75rem;border-radius:8px;background:var(--emerald-soft);color:var(--emerald-deep)}
-.timeline-points .site-links a:hover{background:var(--emerald);color:var(--paper)}
+.timeline-points strong{color:var(--ink);font-weight:600}
+.timeline-meta{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line)}
+.timeline-meta-label{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.7rem}
+.timeline .site-links{display:flex;flex-wrap:wrap;gap:.5rem}
+.timeline .site-links li{padding:0;display:block}
+.timeline .site-links li::before,.timeline .site-links li::after{display:none}
+.timeline .site-links a{display:inline-block;text-decoration:none;font-size:.8rem;font-weight:500;padding:.42rem .75rem;border-radius:999px;background:var(--emerald-soft);color:var(--emerald-deep);border:1px solid rgba(14,110,85,.08);transition:background .2s,color .2s,border-color .2s,transform .2s}
+.timeline .site-links a:hover{background:var(--emerald);color:var(--paper);border-color:var(--emerald);transform:translateY(-1px)}
 /* keep the scroll hint off the cartoon */
 .intro .scroll-hint{left:auto;right:2.5rem;transform:none}
 .intro .scroll-hint{opacity:calc(1 - var(--p,0) * 4)}
+
+.education-section{padding-block:0}
+.edu-scroll-track{position:relative;height:320vh;height:320svh;background:var(--paper)}
+.edu-stage{position:sticky;top:4.5rem;height:calc(100vh - 4.5rem);height:calc(100svh - 4.5rem);display:flex;flex-direction:column;gap:1rem;padding:1.25rem clamp(1rem,3vw,2.5rem) 1.5rem;overflow:hidden;border-top:1px solid var(--line)}
+.edu-stage-header{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem 1rem;width:100%;max-width:72rem;margin-inline:auto}
+.edu-heading .eyebrow::before{width:1.8rem}
+.edu-title{font-family:var(--font-display);font-style:italic;font-size:clamp(1.5rem,3vw,2.35rem);font-weight:600;line-height:1.1;letter-spacing:-.02em;margin-top:.5rem}
+.edu-canvas{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;width:100%;max-width:72rem;margin-inline:auto;overscroll-behavior-inline:contain;scrollbar-width:none}
+.edu-canvas::-webkit-scrollbar{display:none}
+#edu-journey-svg{width:100%;height:100%;max-height:100%;overflow:visible}
+.edu-stroke{stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.edu-stroke-thin{stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.edu-cloud{animation:eduCloudFloat 16s ease-in-out infinite alternate}
+.edu-cloud-b{animation-duration:22s;animation-direction:alternate-reverse}
+@keyframes eduCloudFloat{from{transform:translateX(-10px)}to{transform:translateX(12px)}}
+.edu-milestone-group{opacity:.38;transform:translateY(10px) scale(.96);transition:opacity .55s var(--ease),transform .6s cubic-bezier(.34,1.56,.64,1);cursor:pointer;outline:none}
+.edu-milestone-group.is-active,.edu-milestone-group.is-reached{opacity:1;transform:translateY(0) scale(1)}
+.edu-milestone-group:focus-visible .edu-info-card{outline:2px solid var(--emerald);outline-offset:4px}
+.edu-info-card-fo{overflow:visible;pointer-events:auto}
+.edu-info-card{background:var(--surface);border:2px solid var(--ink);border-radius:16px;padding:12px 15px;box-shadow:0 4px 0 rgba(34,27,19,.16);text-align:left;transition:border-color .35s,box-shadow .35s,background-color .35s}
+.edu-milestone-group.is-reached .edu-info-card{border-color:var(--amber);box-shadow:0 5px 0 rgba(194,107,42,.25);background:#fffcf7}
+.edu-card-top{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:5px}
+.edu-stage-tag{display:inline-block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 9px;border-radius:999px;background:var(--amber-soft);color:var(--amber-deep);transition:background-color .35s,color .35s}
+.edu-milestone-group.is-reached .edu-stage-tag{background:var(--amber);color:#fffdf9}
+.edu-inst-name{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.28;margin:2px 0 4px}
+.edu-inst-meta{font-size:12.5px;font-weight:500;color:var(--muted);line-height:1.3}
+.edu-node-ring{fill:none;stroke:var(--amber);stroke-width:2.5;opacity:0;transform-origin:center;transform-box:fill-box}
+.edu-milestone-group.is-reached .edu-node-ring{animation:eduNodeRipple 1s cubic-bezier(.16,1,.3,1) forwards}
+.edu-node-dot{fill:var(--surface);stroke:var(--ink);stroke-width:2.5;transition:fill .3s}
+.edu-milestone-group.is-reached .edu-node-dot{fill:var(--amber)}
+@keyframes eduNodeRipple{0%{opacity:.9;transform:scale(.8)}100%{opacity:0;transform:scale(2.4)}}
+.edu-student-rig{transition:transform .2s ease}
+.edu-student-rig.is-idle .edu-body-bob{animation:eduIdleBreathe 2.2s ease-in-out infinite alternate}
+@keyframes eduIdleBreathe{from{transform:translateY(0)}to{transform:translateY(-1.8px)}}
+.edu-student-rig.is-walking .edu-body-bob{animation:eduBodyBounce .28s ease-in-out infinite alternate}
+.edu-student-rig.is-walking .edu-head-nod{transform-origin:0 -96px;animation:eduHeadBob .28s ease-in-out infinite alternate-reverse}
+.edu-student-rig.is-walking .edu-backpack-sway{transform-origin:-14px -76px;animation:eduPackSway .28s ease-in-out infinite alternate}
+.edu-leg-front-hip,.edu-leg-front-knee,.edu-leg-back-hip,.edu-leg-back-knee{transition:transform .2s ease}
+.edu-leg-front-hip,.edu-leg-back-hip{transform-origin:0 -38px}
+.edu-leg-front-knee,.edu-leg-back-knee{transform-origin:0 -19px}
+.edu-student-rig.is-walking .edu-leg-front-hip{animation:eduHipFront .56s ease-in-out infinite}
+.edu-student-rig.is-walking .edu-leg-front-knee{animation:eduKneeFront .56s ease-in-out infinite}
+.edu-student-rig.is-walking .edu-leg-back-hip{animation:eduHipBack .56s ease-in-out infinite}
+.edu-student-rig.is-walking .edu-leg-back-knee{animation:eduKneeBack .56s ease-in-out infinite}
+.edu-arm-front,.edu-arm-back{transition:transform .25s ease}
+.edu-arm-front{transform-origin:2px -68px}
+.edu-arm-back{transform-origin:4px -68px}
+.edu-student-rig.is-walking .edu-arm-front{animation:eduArmFront .56s ease-in-out infinite}
+.edu-student-rig.is-walking .edu-arm-back{animation:eduArmBack .56s ease-in-out infinite}
+.edu-student-rig.is-celebrating .edu-arm-front{transform:rotate(-132deg);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.edu-student-rig.is-celebrating .edu-body-bob{animation:eduVictoryHop .65s cubic-bezier(.34,1.56,.64,1) 1}
+@keyframes eduBodyBounce{0%{transform:translateY(0)}100%{transform:translateY(-4.5px)}}
+@keyframes eduHeadBob{0%{transform:rotate(-2deg)}100%{transform:rotate(3deg)}}
+@keyframes eduPackSway{0%{transform:rotate(2deg)}100%{transform:rotate(-3deg)}}
+@keyframes eduHipFront{0%{transform:rotate(-26deg)}50%{transform:rotate(24deg)}100%{transform:rotate(-26deg)}}
+@keyframes eduKneeFront{0%{transform:rotate(8deg)}25%{transform:rotate(4deg)}50%{transform:rotate(12deg)}75%{transform:rotate(36deg)}100%{transform:rotate(8deg)}}
+@keyframes eduHipBack{0%{transform:rotate(24deg)}50%{transform:rotate(-26deg)}100%{transform:rotate(24deg)}}
+@keyframes eduKneeBack{0%{transform:rotate(12deg)}25%{transform:rotate(36deg)}50%{transform:rotate(8deg)}75%{transform:rotate(4deg)}100%{transform:rotate(12deg)}}
+@keyframes eduArmFront{0%{transform:rotate(26deg)}50%{transform:rotate(-24deg)}100%{transform:rotate(26deg)}}
+@keyframes eduArmBack{0%{transform:rotate(-24deg)}50%{transform:rotate(26deg)}100%{transform:rotate(-24deg)}}
+@keyframes eduVictoryHop{0%{transform:translateY(0)}40%{transform:translateY(-14px)}75%{transform:translateY(2px)}100%{transform:translateY(0)}}
+.edu-celebration-layer{opacity:0;pointer-events:none;transition:opacity .3s}
+.edu-celebration-layer.is-active{opacity:1}
+.edu-grad-cap,.edu-confetti{opacity:0;transform-box:fill-box;transform-origin:center}
+.edu-celebration-layer.is-active .edu-cap-1{animation:eduCapToss1 2.1s cubic-bezier(.22,1,.36,1) forwards}
+.edu-celebration-layer.is-active .edu-cap-2{animation:eduCapToss2 2.3s cubic-bezier(.22,1,.36,1) .12s forwards}
+.edu-celebration-layer.is-active .edu-cap-3{animation:eduCapToss3 2s cubic-bezier(.22,1,.36,1) .22s forwards}
+.edu-celebration-layer.is-active .edu-confetti{animation:eduConfettiBurst 1.8s cubic-bezier(.16,1,.3,1) var(--delay,0s) forwards}
+@keyframes eduCapToss1{0%{opacity:0;transform:translate(0,50px) rotate(-15deg) scale(.7)}20%{opacity:1}55%{opacity:1;transform:translate(-18px,-42px) rotate(14deg) scale(1)}100%{opacity:1;transform:translate(-24px,-18px) rotate(6deg) scale(.96)}}
+@keyframes eduCapToss2{0%{opacity:0;transform:translate(0,55px) rotate(12deg) scale(.7)}20%{opacity:1}55%{opacity:1;transform:translate(22px,-48px) rotate(-18deg) scale(1.04)}100%{opacity:1;transform:translate(28px,-22px) rotate(-8deg) scale(.96)}}
+@keyframes eduCapToss3{0%{opacity:0;transform:translate(0,45px) rotate(-8deg) scale(.65)}20%{opacity:1}55%{opacity:1;transform:translate(6px,-36px) rotate(22deg) scale(.95)}100%{opacity:1;transform:translate(10px,-14px) rotate(10deg) scale(.9)}}
+@keyframes eduConfettiBurst{0%{opacity:0;transform:translate(0,0) rotate(0deg) scale(.4)}18%,70%{opacity:1}100%{opacity:0;transform:translate(var(--tx,0px),var(--ty,-60px)) rotate(var(--rot,180deg)) scale(1)}}
+.edu-stage-footer{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.7rem;padding-bottom:.2rem}
+.edu-scroll-cue{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid var(--ink);border-radius:999px;background:rgba(253,250,243,.9);font-size:.78rem;font-weight:600;transition:opacity .4s,transform .4s}
+.edu-scroll-cue span{display:inline-block;animation:eduBounceArrow 1.4s ease-in-out infinite}
+.edu-scroll-cue.is-hidden{opacity:0;transform:translateY(8px);pointer-events:none}
+@keyframes eduBounceArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.edu-progress-track{width:min(22rem,60vw);height:3px;border-radius:999px;background:var(--line);overflow:hidden}
+.edu-progress-fill{display:block;width:100%;height:100%;background:var(--amber);transform:scaleX(0);transform-origin:left}
+@media(max-width:900px){
+  .edu-scroll-track{height:300vh;height:300svh}
+  .edu-stage{top:4rem;height:calc(100vh - 4rem);height:calc(100svh - 4rem);padding-inline:1rem;gap:.6rem}
+  .edu-stage-header{align-items:center}
+  .edu-title{font-size:1.35rem}
+  .edu-heading .eyebrow span{font-size:.65rem}
+  .edu-canvas{justify-content:center;overflow:hidden}
+  #edu-journey-svg{width:100%;height:100%;max-height:100%;flex:none}
+  .edu-info-card{padding:10px 12px;border-radius:12px;transform:scale(.72);transform-origin:top left}
+  .edu-stage-tag{font-size:13px}
+  .edu-inst-name{font-size:18px}
+  .edu-inst-meta{font-size:15px}
+}
+@media(max-width:480px){
+  .edu-stage{gap:.45rem;padding-inline:.75rem}
+  .edu-title{font-size:1.18rem}
+  .edu-progress-track{width:min(18rem,72vw)}
+  .edu-scroll-cue{font-size:.72rem;padding:.35rem .8rem}
+}

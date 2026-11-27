@@ -120,6 +120,206 @@
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
 
+  function scrollToElement(el, offset) {
+    if (!el) return;
+    var padding = offset === undefined ? (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) : offset;
+    var top = Math.max(0, window.scrollY + el.getBoundingClientRect().top - padding);
+    window.scrollTo({ top: top, behavior: reducedMotion ? "auto" : "smooth" });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      var id = link.getAttribute("href");
+      if (!id || id === "#") return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      scrollToElement(target, target.classList.contains("education-section") ? 0 : undefined);
+    });
+  });
+
+  var eduTrack = document.getElementById("edu-scroll-track");
+  if (eduTrack) {
+    var eduCanvas = document.getElementById("edu-canvas");
+    var eduSvg = document.getElementById("edu-journey-svg");
+    var eduPath = document.getElementById("edu-journey-path");
+    var eduSheen = document.getElementById("edu-progress-sheen");
+    var eduProgressPath = document.getElementById("edu-progress-path");
+    var eduAnchor = document.getElementById("edu-student-anchor");
+    var eduRig = document.getElementById("edu-student-rig");
+    var eduCelebration = document.getElementById("edu-celebration-layer");
+    var eduCue = document.getElementById("edu-scroll-cue");
+    var eduFill = document.getElementById("edu-progress-fill");
+    var eduLength = eduPath.getTotalLength();
+    var eduSheenLength = eduSheen.getTotalLength();
+    var eduMilestones = [
+      { el: document.getElementById("edu-ms-school"), node: document.getElementById("edu-node-school"), reveal: 0, reach: 0.14, jump: 0.16 },
+      { el: document.getElementById("edu-ms-plus2"), node: document.getElementById("edu-node-plus2"), reveal: 0.3, reach: 0.49, jump: 0.51 },
+      { el: document.getElementById("edu-ms-college"), node: document.getElementById("edu-node-college"), reveal: 0.65, reach: 0.84, jump: 1 }
+    ];
+    var eduTarget = 0, eduCurrent = 0, eduLast = 0, eduFrame = 0, eduDirection = 1, eduWalkTimer = 0;
+
+    function eduClamp(value) { return Math.max(0, Math.min(1, value)); }
+    function eduIsMobile() { return window.matchMedia("(max-width: 900px)").matches; }
+    function eduVisibleHeight() {
+      var navEl = document.getElementById("nav");
+      var navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+      return Math.max(1, window.innerHeight - navHeight);
+    }
+    function eduScrollable() { return Math.max(1, eduTrack.getBoundingClientRect().height - eduVisibleHeight()); }
+    function eduProgress() { return eduClamp(-eduTrack.getBoundingClientRect().top / eduScrollable()); }
+
+    function eduScrollTo(progress) {
+      var rect = eduTrack.getBoundingClientRect();
+      var top = window.scrollY + rect.top + eduScrollable() * eduClamp(progress);
+      window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? "auto" : "smooth" });
+    }
+
+    function eduPanCanvas(progress) {
+      if (eduIsMobile()) return;
+      var maxLeft = eduCanvas.scrollWidth - eduCanvas.clientWidth;
+      if (maxLeft > 1) eduCanvas.scrollLeft = maxLeft * progress;
+    }
+
+    function eduInterpolate(stops, values, value) {
+      for (var i = 1; i < stops.length; i++) {
+        if (value <= stops[i]) {
+          var t = Math.max(0, Math.min(1, (value - stops[i - 1]) / (stops[i] - stops[i - 1])));
+          t = t * t * (3 - 2 * t);
+          return values[i - 1] + (values[i] - values[i - 1]) * t;
+        }
+      }
+      return values[values.length - 1];
+    }
+
+    function eduCamera(progress, point) {
+      var zoom = eduInterpolate([0, 0.16, 0.51, 0.84, 1], [1, 1.12, 1.17, 1.24, 1.3], progress);
+      var width, height, centerX, centerY;
+
+      if (eduIsMobile()) {
+        height = 540 / zoom;
+        var rect = eduCanvas.getBoundingClientRect();
+        width = Math.min(1800, height * (rect.width / Math.max(1, rect.height)));
+        var cardX = eduInterpolate([0, 0.16, 0.51, 0.84, 1], [284, 284, 849, 1289, 1289], progress);
+        var cardWeight = eduInterpolate([0, 0.84], [0.9, 1], progress);
+        centerX = Math.max(width / 2, Math.min(1800 - width / 2, cardX * cardWeight + point.x * (1 - cardWeight)));
+        centerY = eduInterpolate([0, 1], [270, 240], progress);
+        centerY = Math.max(height / 2, Math.min(540 - height / 2, centerY));
+      } else {
+        width = 1800 / zoom;
+        height = 540 / zoom;
+        var xOvershoot = 20 + (zoom - 1) * 400;
+        var yOvershoot = 20 + (zoom - 1) * 200;
+        centerX = Math.max(width / 2 - xOvershoot, Math.min(1800 - width / 2 + xOvershoot, point.x));
+        var wantedY = 270 + (point.y + 30 - 270) * 0.28;
+        centerY = Math.max(height / 2 - yOvershoot, Math.min(540 - height / 2 + yOvershoot, wantedY));
+      }
+
+      eduSvg.setAttribute("viewBox", (centerX - width / 2).toFixed(1) + " " + (centerY - height / 2).toFixed(1) + " " + width.toFixed(1) + " " + height.toFixed(1));
+    }
+
+    function eduRender(progress) {
+      var p = eduClamp(progress);
+      var len = p * eduLength;
+      var pt = eduPath.getPointAtLength(len);
+
+      eduProgressPath.style.strokeDasharray = String(eduLength);
+      eduProgressPath.style.strokeDashoffset = (eduLength - len).toFixed(2);
+      eduSheen.style.strokeDasharray = String(eduSheenLength);
+      eduSheen.style.strokeDashoffset = (eduSheenLength - p * eduSheenLength).toFixed(2);
+      var mobile = eduIsMobile();
+      var studentX = mobile ? Math.min(pt.x, 1370) : pt.x;
+      eduAnchor.setAttribute("transform", "translate(" + studentX.toFixed(2) + "," + (pt.y + 30).toFixed(2) + ")");
+      eduCelebration.setAttribute("transform", "translate(" + (mobile ? -260 : 0) + ", " + (mobile ? 150 : 30) + ")");
+      eduCamera(p, pt);
+      eduCue.classList.toggle("is-hidden", p > 0.03);
+      eduFill.style.transform = "scaleX(" + p.toFixed(3) + ")";
+      eduPanCanvas(p);
+
+      eduMilestones.forEach(function (m) {
+        var revealed = p >= m.reveal;
+        var reached = p >= m.reach;
+        m.el.classList.toggle("is-active", revealed);
+        m.node.classList.toggle("is-active", revealed);
+        m.el.classList.toggle("is-reached", reached);
+        m.node.classList.toggle("is-reached", reached);
+      });
+
+      if (p >= 0.96) {
+        eduRig.setAttribute("transform", "scale(1, 1)");
+        eduRig.classList.remove("is-walking", "is-idle");
+        eduRig.classList.add("is-celebrating");
+        eduCelebration.classList.add("is-active");
+      } else {
+        eduCelebration.classList.remove("is-active");
+        eduRig.classList.remove("is-celebrating");
+      }
+    }
+
+    function eduWalk(direction) {
+      if (reducedMotion) return;
+      eduDirection = direction;
+      eduRig.setAttribute("transform", "scale(" + eduDirection + ", 1)");
+      if (eduCurrent < 0.96) {
+        eduRig.classList.remove("is-idle", "is-celebrating");
+        eduRig.classList.add("is-walking");
+      }
+      clearTimeout(eduWalkTimer);
+      eduWalkTimer = setTimeout(function () {
+        eduRig.classList.remove("is-walking");
+        eduRig.classList.add(eduCurrent >= 0.96 ? "is-celebrating" : "is-idle");
+      }, 160);
+    }
+
+    function eduAnimate() {
+      var diff = eduTarget - eduCurrent;
+      if (Math.abs(diff) > 0.0002) {
+        eduCurrent += diff * (reducedMotion ? 1 : 0.095);
+        eduRender(eduCurrent);
+        eduFrame = requestAnimationFrame(eduAnimate);
+      } else {
+        eduCurrent = eduTarget;
+        eduRender(eduCurrent);
+        eduFrame = 0;
+      }
+    }
+
+    function eduQueue() { if (!eduFrame) eduFrame = requestAnimationFrame(eduAnimate); }
+    function eduSync() {
+      eduTarget = eduProgress();
+      eduCurrent = eduTarget;
+      eduLast = eduTarget;
+      eduRender(eduCurrent);
+    }
+
+    window.addEventListener("scroll", function () {
+      var next = eduProgress();
+      var delta = next - eduLast;
+      if (Math.abs(delta) > 0.0005) eduWalk(delta > 0 ? 1 : -1);
+      eduLast = next;
+      eduTarget = next;
+      eduQueue();
+    }, { passive: true });
+
+    window.addEventListener("resize", eduSync);
+    window.addEventListener("load", eduSync);
+
+    eduMilestones.forEach(function (m) {
+      function jump() { eduScrollTo(m.jump); }
+      function onKey(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          jump();
+        }
+      }
+      m.el.addEventListener("click", jump);
+      m.el.addEventListener("keydown", onKey);
+      m.node.addEventListener("click", jump);
+    });
+
+    eduSync();
+  }
+
   /* ---- active section ---- */
   var links = Array.prototype.slice.call(document.querySelectorAll(".nav-links a, .mobile-menu a"));
   var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); })
